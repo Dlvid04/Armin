@@ -9,7 +9,7 @@ public class LogicScript : MonoBehaviour
     public GameObject Menue;
 
     public void StartGame() {
-        SceneManager.LoadScene("Escape Insanity");
+        SceneManager.LoadScene("Armin");
         Menue.SetActive(false);
     }
 
