@@ -6,14 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class LogicScript : MonoBehaviour
 {
-    public GameObject Menue;
+    public string SceneName;
 
-    public void StartGame() {
-        SceneManager.LoadScene("Armin");
-        Menue.SetActive(false);
+    public void StartGame() 
+    {
+        SceneManager.LoadScene(SceneName);
     }
 
-    public void EndGame() { 
+    public void EndGame() 
+    { 
         Application.Quit();
     }
 
