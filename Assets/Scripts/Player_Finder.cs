@@ -1,13 +1,14 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Player_Movement : MonoBehaviour
+public class Player_Finder : MonoBehaviour
 {
     public CharacterController Controller;
+    public NavMeshAgent Enemy;
+    public Transform Player;
 
-    public float Speed = 3f;
     public float gravity = -9.8f;
 
     public Transform GroundCheck;
@@ -28,7 +29,8 @@ public class Player_Movement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
 
-        if (isGrounded && velocity.y < 0) {
+        if (isGrounded && velocity.y < 0)
+        {
             velocity.y = -2f;
         }
 
@@ -36,20 +38,10 @@ public class Player_Movement : MonoBehaviour
 
         Controller.Move(velocity * Time.deltaTime);
 
+        Enemy.SetDestination(Player.position);
 
-        float X = Input.GetAxis("Horizontal");
-        float Z = Input.GetAxis("Vertical");
-
-        Vector3 Move = transform.right * X + transform.forward * Z;
-
-        Controller.Move(Move * Speed * Time.deltaTime);
-
-        if (Input.GetKey(KeyCode.LeftShift)) {
-            Speed = 4.5f;
+        if (Enemy.remainingDistance == 1f) {
+            //Enemy.isStopped = true;
         }
-        else {
-            Speed = 3f;
-        }
-        
     }
 }
