@@ -1,10 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DoorScript : MonoBehaviour
 {
     public float rayLength = 4f;
-    public Text doorText;
+    public TMP_Text doorText;
 
     void Update()
     {
