@@ -25,7 +25,7 @@ Material:
   m_Parent: {fileID: 2100000, guid: 6ac7b35c9b060414f8a30304d037b944, type: 2}
   m_ModifiedSerializedProperties: 18
   m_ValidKeywords:
-  - _OCCLUSIONMAP
+  - _NORMALMAP
   - _PARALLAXMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 6
@@ -41,18 +41,18 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 0c334a780102969469f4d209109587c1, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 1.3, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 579498b6c65cb244fac1693ab5f8a307, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 0c334a780102969469f4d209109587c1, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 1.3, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 579498b6c65cb244fac1693ab5f8a307, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
