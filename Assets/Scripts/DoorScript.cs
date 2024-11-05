@@ -20,7 +20,7 @@ public class DoorScript : MonoBehaviour
 
                 if (Input.GetKeyDown("e"))
                 {
-                    hit.collider.gameObject.SendMessage("onDoorScript");
+                    hit.collider.gameObject.SendMessage("ToggleDoor");
                 }
             }
             else
