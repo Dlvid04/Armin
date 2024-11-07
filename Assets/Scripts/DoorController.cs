@@ -22,32 +22,32 @@ public class DoorController : MonoBehaviour
         {
             if (isOpen)  // Wenn die Tür offen ist, schließe sie
             {
-                if (anim["close"] != null)  // Überprüfen, ob die 'close'-Animation existiert
+                if (anim["zu"] != null)  // Überprüfen, ob die 'close'-Animation existiert
                 {
                     Debug.Log("Tür wird geschlossen.");
-                    anim.Play("close");
+                    anim.Play("zu");
                     isOpen = false;  // Markiere die Tür als geschlossen
                     isAnimating = true;  // Setze den Animationsstatus auf "läuft"
-                    Invoke("FinishAnimation", anim["close"].length);  // Nach Abschluss der Animation den Status zurücksetzen
+                    Invoke("FinishAnimation", anim["zu"].length);  // Nach Abschluss der Animation den Status zurücksetzen
                 }
                 else
                 {
-                    Debug.LogWarning("Die 'close'-Animation wurde nicht gefunden!");
+                    Debug.LogWarning("Die 'zu'-Animation wurde nicht gefunden!");
                 }
             }
             else  // Wenn die Tür geschlossen ist, öffne sie
             {
-                if (anim["open"] != null)  // Überprüfen, ob die 'open'-Animation existiert
+                if (anim["auf"] != null)  // Überprüfen, ob die 'open'-Animation existiert
                 {
                     Debug.Log("Tür wird geöffnet.");
-                    anim.Play("open");
+                    anim.Play("auf");
                     isOpen = true;  // Markiere die Tür als offen
                     isAnimating = true;  // Setze den Animationsstatus auf "läuft"
-                    Invoke("FinishAnimation", anim["open"].length);  // Nach Abschluss der Animation den Status zurücksetzen
+                    Invoke("FinishAnimation", anim["auf"].length);  // Nach Abschluss der Animation den Status zurücksetzen
                 }
                 else
                 {
-                    Debug.LogWarning("Die 'open'-Animation wurde nicht gefunden!");
+                    Debug.LogWarning("Die 'auf'-Animation wurde nicht gefunden!");
                 }
             }
         }
