@@ -5871,9 +5871,9 @@ Light:
   serializedVersion: 10
   m_Type: 3
   m_Shape: 2
-  m_Color: {r: 0.7207546, g: 0.7207546, b: 0.7207546, a: 1}
-  m_Intensity: 50
-  m_Range: 10
+  m_Color: {r: 0.8039216, g: 0.8039216, b: 0.8039216, a: 1}
+  m_Intensity: 80
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -9337,9 +9337,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012808223447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e617ac95c55644f938929ee87c74b211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectNumber: 1
 --- !u!114 &114000012404290185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9349,9 +9350,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012808223447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 3174ace299f2b4c80baf44a6283329cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reachRange: 1.8
 --- !u!114 &114000012925854720
 MonoBehaviour:
   m_ObjectHideFlags: 0
