@@ -47,7 +47,6 @@ public class MoveObjectController : MonoBehaviour
 		if (other.gameObject == player)		//player has collided with trigger
 		{			
 			playerEntered = true;
-
 		}
 	}
 
@@ -66,25 +65,24 @@ public class MoveObjectController : MonoBehaviour
 	void Update()
 	{		
 		if (playerEntered)
-		{	
-
-			//center point of viewport in World space.
-			Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0f));
+		{
+            //center point of viewport in World space.
+            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f,0.5f,0f));
 			RaycastHit hit;
 
 			//if raycast hits a collider on the rayLayerMask
 			if (Physics.Raycast(rayOrigin,fpsCam.transform.forward, out hit,reachRange,rayLayerMask))
 			{
-				MoveableObject moveableObject = null;
+                MoveableObject moveableObject = null;
 				//is the object of the collider player is looking at the same as me?
 				if (!isEqualToParent(hit.collider, out moveableObject))
-				{	//it's not so return;
-					return;
+				{   //it's not so return;
+                    return;
 				}
 					
 				if (moveableObject != null)		//hit object must have MoveableDraw script attached
 				{
-					showInteractMsg = true;
+                    showInteractMsg = true;
 					string animBoolNameNum = animBoolName + moveableObject.objectNumber.ToString();
 
 					bool isOpen = anim.GetBool(animBoolNameNum);	//need current state for message.
