@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Door
   - InteractRaycast
+  - Interactable
   layers:
   - Default
   - TransparentFX

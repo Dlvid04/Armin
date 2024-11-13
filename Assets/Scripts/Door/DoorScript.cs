@@ -5,7 +5,13 @@ using UnityEngine.UI;
 public class DoorScript : MonoBehaviour
 {
     public float rayLength = 4f;
-    public TMP_Text doorText;
+    public GameObject Interactable;
+
+    void Start()
+    {
+        Interactable = GameObject.Find("Image_Interactable");
+    }
+
 
     void Update()
     {
@@ -16,21 +22,11 @@ public class DoorScript : MonoBehaviour
         {
             if (hit.collider.gameObject.tag == "Door")
             {
-                doorText.gameObject.SetActive(true);
-
                 if (Input.GetKeyDown("e"))
                 {
                     hit.collider.gameObject.SendMessage("ToggleDoor");
                 }
             }
-            else
-            {
-                doorText.gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            doorText.gameObject.SetActive(false);
         }
     }
 }
