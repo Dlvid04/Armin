@@ -2592,12 +2592,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09559857, y: 0.7006147, z: -0.09559857, w: 0.7006147}
-  m_LocalPosition: {x: -946.66, y: -532.49, z: -21.75}
+  m_LocalRotation: {x: 0.13675892, y: 0.7022463, z: -0.14058085, w: 0.684386}
+  m_LocalPosition: {x: 15.293, y: 7.643, z: -21.144}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 929783573}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 15.54, y: 90, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -2619,7 +2619,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
@@ -5906,7 +5906,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8046286}
-  - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7870,7 +7869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1216939884}
   - component: {fileID: 1216939885}
-  m_Layer: 4
+  m_Layer: 7
   m_Name: Post-process Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8248,7 +8247,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1308152936
 Transform:
@@ -8339,7 +8338,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -14032,6 +14031,7 @@ MeshCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 330585546}
   - {fileID: 929783573}
   - {fileID: 646330967}
   - {fileID: 395906152}

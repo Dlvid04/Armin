@@ -5,11 +5,14 @@ public class MoveObjectController : MonoBehaviour
 {
 	public float reachRange = 1.8f;			
 
-	private Animator anim;
+	[SerializeField] int objectNumber = 0;
+
+	[SerializeField] private Animator anim;
 	private Camera fpsCam;
 	private GameObject player;
 
-	private const string animBoolName = "isOpen_Obj_";
+	[SerializeField] string animBoolName = "isOpen_Obj_";
+	[SerializeField]LayerMask iRayLM;
 
 	private bool playerEntered;
 	private bool showInteractMsg;
@@ -31,10 +34,10 @@ public class MoveObjectController : MonoBehaviour
 
 		//create AnimatorOverrideController to re-use animationController for sliding draws.
 		anim = GetComponent<Animator>(); 
-		anim.enabled = false;  //disable animation states by default.  
+		//anim.enabled = false;  //disable animation states by default.  
 
 		//the layer used to mask raycast for interactable objects only
-		LayerMask iRayLM = LayerMask.NameToLayer("InteractRaycast");
+		//LayerMask iRayLM = LayerMask.NameToLayer("InteractRaycast");
 		rayLayerMask = 1 << iRayLM.value;  
 
 		//setup GUI style settings for user prompts
@@ -80,22 +83,22 @@ public class MoveObjectController : MonoBehaviour
                     return;
 				}
 					
-				if (moveableObject != null)		//hit object must have MoveableDraw script attached
-				{
+				//if (moveableObject != null)		//hit object must have MoveableDraw script attached
+				//{
                     showInteractMsg = true;
 					string animBoolNameNum = animBoolName + moveableObject.objectNumber.ToString();
 
 					bool isOpen = anim.GetBool(animBoolNameNum);	//need current state for message.
 					msg = getGuiMsg(isOpen);
 
-					if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1"))
+					if (Input.GetKeyUp(KeyCode.E))
 					{
-						anim.enabled = true;
-						anim.SetBool(animBoolNameNum,!isOpen);
+						//anim.enabled = true;
+						anim.SetBool(objectNumber,!isOpen);
 						msg = getGuiMsg(!isOpen);
 					}
 
-				}
+				//}
 			}
 			else
 			{

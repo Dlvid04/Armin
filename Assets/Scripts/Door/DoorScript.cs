@@ -18,13 +18,17 @@ public class DoorScript : MonoBehaviour
         RaycastHit hit;
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-        if (Physics.Raycast(transform.position, fwd, out hit, rayLength))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, rayLength))
         {
+            Debug.DrawLine(Camera.main.transform.position, hit.point);
             if (hit.collider.gameObject.tag == "Door")
             {
+                    print("try interact2");
                 if (Input.GetKeyDown("e"))
                 {
-                    hit.collider.gameObject.SendMessage("ToggleDoor");
+                    print("try interact3");
+                    hit.collider.gameObject.GetComponentInParent<DoorController>().SendMessage("ToggleDoor");
+                    //hit.collider.gameObject.GetComponent<DoorController>().SendMessage("ToggleDoor");
                 }
             }
         }

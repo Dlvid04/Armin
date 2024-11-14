@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DoorController : MonoBehaviour
@@ -6,8 +7,14 @@ public class DoorController : MonoBehaviour
     private bool isOpen = false; // Zustand der Tür (offen oder geschlossen)
     private bool isAnimating = false; // Animation-Status (ob die Animation noch läuft)
 
+    void Start()
+    {
+        if(door == null)
+        door = gameObject;
+    }
     public void ToggleDoor()
     {
+        print("interact with door");
         // Überprüfe, ob gerade eine Animation läuft
         if (isAnimating)
         {
@@ -16,40 +23,14 @@ public class DoorController : MonoBehaviour
         }
 
         // Animation-Component holen
-        Animation anim = door.GetComponent<Animation>();
+        Animator anim = door.GetComponent<Animator>();
 
+        
         if (anim != null)
         {
-            if (isOpen)  // Wenn die Tür offen ist, schließe sie
-            {
-                if (anim["zu"] != null)  // Überprüfen, ob die 'close'-Animation existiert
-                {
-                    Debug.Log("Tür wird geschlossen.");
-                    anim.Play("zu");
-                    isOpen = false;  // Markiere die Tür als geschlossen
+                    isOpen = !isOpen;  // Markiere die Tür als geschlossen
                     isAnimating = true;  // Setze den Animationsstatus auf "läuft"
-                    Invoke("FinishAnimation", anim["zu"].length);  // Nach Abschluss der Animation den Status zurücksetzen
-                }
-                else
-                {
-                    Debug.LogWarning("Die 'zu'-Animation wurde nicht gefunden!");
-                }
-            }
-            else  // Wenn die Tür geschlossen ist, öffne sie
-            {
-                if (anim["auf"] != null)  // Überprüfen, ob die 'open'-Animation existiert
-                {
-                    Debug.Log("Tür wird geöffnet.");
-                    anim.Play("auf");
-                    isOpen = true;  // Markiere die Tür als offen
-                    isAnimating = true;  // Setze den Animationsstatus auf "läuft"
-                    Invoke("FinishAnimation", anim["auf"].length);  // Nach Abschluss der Animation den Status zurücksetzen
-                }
-                else
-                {
-                    Debug.LogWarning("Die 'auf'-Animation wurde nicht gefunden!");
-                }
-            }
+                    anim.SetBool("isOpen_Obj_1", isOpen);
         }
         else
         {
