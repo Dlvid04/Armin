@@ -23,10 +23,8 @@ public class DoorScript : MonoBehaviour
             Debug.DrawLine(Camera.main.transform.position, hit.point);
             if (hit.collider.gameObject.tag == "Door")
             {
-                    print("try interact2");
                 if (Input.GetKeyDown("e"))
                 {
-                    print("try interact3");
                     hit.collider.gameObject.GetComponentInParent<DoorController>().SendMessage("ToggleDoor");
                     //hit.collider.gameObject.GetComponent<DoorController>().SendMessage("ToggleDoor");
                 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
     public CharacterController Controller;
+    public Animator Animator;
 
     public float Speed = 3f;
     public float gravity = -9.8f;
@@ -44,11 +45,24 @@ public class Player_Movement : MonoBehaviour
 
         Controller.Move(Move * Speed * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.LeftShift)) {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
             Speed = 4.5f;
+            Animator.SetBool("IsRunning", true);
+            Animator.SetBool("IsStanding", false);
+            Animator.SetBool("IsWalking", false);
+        }
+        else if (!Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            Speed = 3f;
+            Animator.SetBool("IsRunning",false);
+            Animator.SetBool("IsStanding",false);
+            Animator.SetBool("IsWalking", true);
         }
         else {
-            Speed = 3f;
+            Animator.SetBool("IsRunning", false);
+            Animator.SetBool("IsStanding", true);
+            Animator.SetBool("IsWalking", false);
         }
         
     }

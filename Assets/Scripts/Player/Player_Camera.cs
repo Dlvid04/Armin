@@ -22,7 +22,7 @@ public class Player_Camera : MonoBehaviour
         float MouseY = Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime;
 
         xRotation -= MouseY;
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        xRotation = Mathf.Clamp(xRotation, -70f, 70f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         PlayerBody.Rotate(Vector3.up * MouseX);

@@ -22,7 +22,7 @@ public class Is_Interactable : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, rayLength)) {
-            if (hit.collider.gameObject.CompareTag("Interactable") || hit.collider.gameObject.CompareTag("Door")) {
+            if (hit.collider.gameObject.CompareTag("Interactable") || hit.collider.gameObject.CompareTag("Door") || hit.collider.gameObject.CompareTag("Portable")) {
                 Crosshair.SetActive(true);
             }
             else { 
