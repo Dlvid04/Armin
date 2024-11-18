@@ -24,9 +24,17 @@ public class Home_Bright_Riddle : MonoBehaviour
             {
                 if (Input.GetKeyDown("e"))
                 {
-                    if(FindFirstObjectByType<Inventory>().keyId == "key1")
+                    if(FindFirstObjectByType<Inventory>().keyId == "key1" && hit.collider.gameObject.name == "Cube")
                     {
-                        GameObject.Find("Rust_Key").GetComponent<Animator>().SetBool("Erscheinen",true);
+                        GameObject.Find("Rust_Key (2)").GetComponent<Animator>().SetBool("Erscheinen", true);
+                    }
+                    if (FindFirstObjectByType<Inventory>().keyId == "key2" && hit.collider.gameObject.name == "Cube (1)")
+                    {
+                        GameObject.Find("Rust_Key (3)").GetComponent<Animator>().SetBool("Erscheinen", true);
+                    }
+                    if (FindFirstObjectByType<Inventory>().keyId == "key3" && hit.collider.gameObject.name == "Cube (2)")
+                    {
+                        GameObject.Find("Rust_Key (3)").GetComponent<Animator>().SetBool("Erscheinen", true);
                     }
                 }
             }
