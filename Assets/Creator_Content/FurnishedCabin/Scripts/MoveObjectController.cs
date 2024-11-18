@@ -83,8 +83,8 @@ public class MoveObjectController : MonoBehaviour
                     return;
 				}
 					
-				//if (moveableObject != null)		//hit object must have MoveableDraw script attached
-				//{
+				if (moveableObject != null)		//hit object must have MoveableDraw script attached
+				{
                     showInteractMsg = true;
 					string animBoolNameNum = animBoolName + moveableObject.objectNumber.ToString();
 
@@ -98,7 +98,7 @@ public class MoveObjectController : MonoBehaviour
 						msg = getGuiMsg(!isOpen);
 					}
 
-				//}
+				}
 			}
 			else
 			{

@@ -30,23 +30,38 @@ public class Is_Portable : MonoBehaviour
                     if (Inventory.Slot1_Belegt == false && Inventory.Slot2_Belegt == false)
                     {
                         hit.collider.gameObject.transform.SetParent(Inventory.Slot1, false);
-                        Inventory.Slot1.GetChild(0).transform.localPosition = Vector3.zero; //Key wird nicht 0,0,0 Gesetzt!
+                        Inventory.Slot1.GetChild(0).transform.localPosition = Vector3.zero;
+                        Inventory.Slot1.GetChild(0).transform.localScale = Vector3.one;
+                        Inventory.Slot1.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
                         Inventory.Slot1_Belegt = true;
                         Inventory.Slot_Switchen(1);
+                        if(hit.transform.GetComponent<Animator>() != null){
+                            hit.transform.GetComponent<Animator>().enabled = false;
+                        }
                     }
                     else if (Inventory.Slot1_Belegt == true && Inventory.Slot2_Belegt == false)
                     {
                         hit.collider.gameObject.transform.SetParent(Inventory.Slot2, false);
-                        Inventory.Slot2.GetChild(0).transform.localPosition = Vector3.zero; //Key wird nicht 0,0,0 Gesetzt!
+                        Inventory.Slot2.GetChild(0).transform.localPosition = Vector3.zero;
+                        Inventory.Slot2.GetChild(0).transform.localScale = Vector3.one;
+                        Inventory.Slot2.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
                         Inventory.Slot2_Belegt = true;
                         Inventory.Slot_Switchen(2);
+                        if(hit.transform.GetComponent<Animator>() != null){
+                            hit.transform.GetComponent<Animator>().enabled = false;
+                        }
                     }
                     else if (Inventory.Slot1_Belegt == false && Inventory.Slot2_Belegt == true)
                     {
                         hit.collider.gameObject.transform.SetParent(Inventory.Slot1, false);
-                        Inventory.Slot1.GetChild(0).transform.localPosition = Vector3.zero; //Key wird nicht 0,0,0 Gesetzt!
+                        Inventory.Slot1.GetChild(0).transform.localPosition = Vector3.zero;
+                        Inventory.Slot1.GetChild(0).transform.localScale = Vector3.one;
+                        Inventory.Slot1.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
                         Inventory.Slot1_Belegt = true;
                         Inventory.Slot_Switchen(1);
+                        if(hit.transform.GetComponent<Animator>() != null){
+                            hit.transform.GetComponent<Animator>().enabled = false;
+                        }
                     }
                 }
             }

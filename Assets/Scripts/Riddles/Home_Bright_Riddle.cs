@@ -24,7 +24,10 @@ public class Home_Bright_Riddle : MonoBehaviour
             {
                 if (Input.GetKeyDown("e"))
                 {
-                    GameObject.Find("Rust_Key").GetComponent<Animator>().SetBool("Erscheinen",true);
+                    if(FindFirstObjectByType<Inventory>().keyId == "key1")
+                    {
+                        GameObject.Find("Rust_Key").GetComponent<Animator>().SetBool("Erscheinen",true);
+                    }
                 }
             }
         }

@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     public bool Slot1_Belegt, Slot2_Belegt = false;
     bool Slot1_Angezeigt = true;
     bool Slot2_Angezeigt = false;
+    public string keyId ;
     
 
 
@@ -23,6 +24,18 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q)) {
             Throw();
+        }
+
+        if(Slot1_Angezeigt && Slot1_Belegt){
+            Key K = Slot1.GetChild(0).GetComponent<Key>();
+            if(K != null){
+                keyId = K.id;
+            }
+        }else if(Slot2_Angezeigt && Slot2_Belegt){
+            Key K = Slot2.GetChild(0).GetComponent<Key>();
+            if(K != null){
+                keyId = K.id;
+            }
         }
     }
 
@@ -48,15 +61,15 @@ public class Inventory : MonoBehaviour
     public void Throw() {
         if (Slot1_Angezeigt && Slot1_Belegt)
         {
-            Debug.Log("Wasser");
-            Slot1.GetChild(0).gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * 3f, ForceMode.Impulse);
+            Slot1.GetChild(0).gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * 1f, ForceMode.Impulse);
+            Slot1.GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
             Slot1.GetChild(0).gameObject.transform.SetParent(Items_On_Ground, true);
             Slot1_Belegt = false;
         }
         else if (Slot2_Angezeigt && Slot2_Belegt) 
         {
-            Debug.Log("Feuer");
-            Slot2.GetChild(0).gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * 3f, ForceMode.Impulse); //wird nicht geschmissen
+            Slot2.GetChild(0).gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * 1f, ForceMode.Impulse);
+            Slot2.GetChild(0).GetComponent<Rigidbody>().isKinematic = false;
             Slot2.GetChild(0).gameObject.transform.SetParent(Items_On_Ground,true);
             Slot2_Belegt = false;
         }
