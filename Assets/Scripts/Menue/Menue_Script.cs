@@ -6,11 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class LogicScript : MonoBehaviour
 {
-    public string SceneName;
 
     public void StartGame() 
     {
-        SceneManager.LoadScene(SceneName);
+        SceneManager.LoadScene("Armin");
     }
 
     public void EndGame() 

@@ -41,6 +41,7 @@ public class Home_Bright_Riddle : MonoBehaviour
                     if (FindFirstObjectByType<Inventory>().keyId == "key3" && hit.collider.gameObject.name == "Cube (2)")
                     {
                         Enemy.SetActive(true);
+                        Enemy.transform.GetChild(1).GetComponent<Player_Finder>().Scene = "Bright_Start";
                     }
                 }
             }
