@@ -1406,7 +1406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &139086294
 Transform:
   m_ObjectHideFlags: 0
@@ -2896,12 +2896,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299844202}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -13.074179, y: -0.03305149, z: -4.249161}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 3.6871333, y: 1.0023122, z: 5.1525}
+  m_LocalScale: {x: 0.83333325, y: 0.58823526, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1425270752}
+  m_Father: {fileID: 4000013599747884}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &299844202
 GameObject:
@@ -14284,7 +14284,6 @@ Transform:
   - {fileID: 4000011678664686}
   - {fileID: 4000010812345229}
   - {fileID: 4000012082961400}
-  - {fileID: 299591926}
   - {fileID: 4000013599747884}
   m_Father: {fileID: 1269798549}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16957,7 +16956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9462cd88303dafd44819eea8daf22a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MouseSensitivity: 1000
+  MouseSensitivity: 500
   PlayerBody: {fileID: 7083353416111013317}
 --- !u!114 &1791469042
 MonoBehaviour:
@@ -19035,7 +19034,7 @@ GameObject:
   - component: {fileID: 64000014062118092}
   m_Layer: 8
   m_Name: draw05
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19072,7 +19071,7 @@ GameObject:
   - component: {fileID: 64000011240978840}
   m_Layer: 8
   m_Name: draw03
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19123,7 +19122,7 @@ GameObject:
   - component: {fileID: 4000012806264062}
   m_Layer: 0
   m_Name: grp_draw_01
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19235,7 +19234,7 @@ GameObject:
   - component: {fileID: 64000012332369584}
   m_Layer: 8
   m_Name: draw04
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19339,7 +19338,7 @@ GameObject:
   - component: {fileID: 64000012629263254}
   m_Layer: 8
   m_Name: draw01
-  m_TagString: Interactable
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19432,7 +19431,7 @@ GameObject:
   - component: {fileID: 64000010907030878}
   m_Layer: 8
   m_Name: draw07
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19508,7 +19507,7 @@ GameObject:
   - component: {fileID: 64000010589686006}
   m_Layer: 8
   m_Name: draw06
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19630,9 +19629,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013599747884}
   - component: {fileID: 65000012490558666}
-  - component: {fileID: 95000010230794036}
+  - component: {fileID: 114000011546434257}
   - component: {fileID: 114000011546434256}
-  m_Layer: 0
+  - component: {fileID: 114000011546434258}
+  m_Layer: 2
   m_Name: PFB_ChestOfDraws
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19670,7 +19670,7 @@ GameObject:
   - component: {fileID: 64000011539889348}
   m_Layer: 8
   m_Name: draw02
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -20176,6 +20176,7 @@ Transform:
   - {fileID: 4000012862010430}
   - {fileID: 4000014260856252}
   - {fileID: 4000012021443714}
+  - {fileID: 299591926}
   m_Father: {fileID: 1425270752}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4000013842350086
@@ -22506,27 +22507,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Center: {x: -0.13, y: 0.25, z: 0.79}
---- !u!95 &95000010230794036
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000014117616100}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d52c44b6f593943aca203d1493777a62, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!95 &95000010253330037
 Animator:
   serializedVersion: 5
@@ -22612,6 +22592,40 @@ MonoBehaviour:
   iRayLM:
     serializedVersion: 2
     m_Bits: 0
+--- !u!95 &114000011546434257
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000014117616100}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d52c44b6f593943aca203d1493777a62, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &114000011546434258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000014117616100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf0dc15c8de2aa49b18c3f5ea1efe28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 1000014117616100}
 --- !u!1 &115728673871415949
 GameObject:
   m_ObjectHideFlags: 0
