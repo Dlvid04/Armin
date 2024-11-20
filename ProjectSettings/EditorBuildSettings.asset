@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Armin.unity
     guid: 451a7a6684ad8c14689fac0bc2e439e3
+  - enabled: 1
+    path: Assets/Scenes/Bright_Start.unity
+    guid: 3a4b2082d3cbb094b9ccd5f64d52cd4a
+  - enabled: 1
+    path: Assets/Scenes/Dark_Start.unity
+    guid: b9ad7df1e9eed06459d4668972afce49
   m_configObjects: {}
