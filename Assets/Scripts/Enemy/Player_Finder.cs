@@ -24,6 +24,9 @@ public class Player_Finder : MonoBehaviour
 
     public string Scene;
 
+    void Start(){
+        Enemy.gameObject.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -46,7 +49,7 @@ public class Player_Finder : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("Door"))
             {
                 if (!hit.collider.gameObject.GetComponentInParent<DoorController>().isOpen && hit.collider.gameObject.name == "Rotator") {
-                    hit.collider.gameObject.GetComponentInParent<DoorController>().SendMessage("ToggleDoor"); // Hier greift der Gegner auf Türen zu !!! Zu Oft !!!
+                    hit.collider.gameObject.GetComponentInParent<DoorController>().SendMessage("ToggleDoor"); // Hier greift der Gegner auf Tï¿½ren zu !!! Zu Oft !!!
                 }
                 if (hit.collider.gameObject.transform.parent.parent.name == "Door_Home_Entrance")
                 {
@@ -71,6 +74,7 @@ public class Player_Finder : MonoBehaviour
 
     public void Check_If_In_Range() {
         if (Vector3.Distance(Enemy.transform.position, Player.position) <= 2.3f) {
+            Debug.Log(Vector3.Distance(Enemy.transform.position, Player.position));
             SceneManager.LoadScene(Scene);
             if (SceneManager.GetSceneByName(Scene).isLoaded) {
                 SceneManager.UnloadSceneAsync("Armin");
