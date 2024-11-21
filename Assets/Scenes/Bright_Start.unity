@@ -23677,6 +23677,7 @@ MonoBehaviour:
   Riddle2: {fileID: 516215509}
   Riddle3: {fileID: 92233995}
   rayLength: 4
+  Enemy: {fileID: 0}
 --- !u!1 &2054294214
 GameObject:
   m_ObjectHideFlags: 0
