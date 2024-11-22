@@ -9,8 +9,10 @@ using UnityEngine.SceneManagement;
 public class Player_Finder : MonoBehaviour
 {
     public CharacterController Controller;
-    public NavMeshAgent Enemy;
+    public NavMeshAgent EnemyNav;
     public Transform Player;
+    public Transform EnemyTransform;
+    public Animator EnemyAnimator;
 
     public float gravity = -9.8f;
 
@@ -24,16 +26,21 @@ public class Player_Finder : MonoBehaviour
 
     public string Scene;
 
+    bool IsMoving = false;
+
     void Start(){
-        Enemy.gameObject.SetActive(false);
+        EnemyNav.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
     {
         Door_Open_Close();
         Falling();
-        Enemy.SetDestination(Player.position);
+        EnemyNav.SetDestination(Player.position);
         Check_If_In_Range();
+        if (!IsMoving) {
+            Check_If_Moving(EnemyTransform.position);
+        }
     }
 
     public void CallMethod() {
@@ -41,7 +48,7 @@ public class Player_Finder : MonoBehaviour
     }
 
     public void Door_Open_Close() {
-        Ray ray = new Ray(Enemy.transform.position, Enemy.transform.forward);
+        Ray ray = new Ray(EnemyNav.transform.position, EnemyNav.transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, See_Range))
@@ -73,12 +80,23 @@ public class Player_Finder : MonoBehaviour
     }
 
     public void Check_If_In_Range() {
-        if (Vector3.Distance(Enemy.transform.position, Player.position) <= 2.3f) {
-            Debug.Log(Vector3.Distance(Enemy.transform.position, Player.position));
+        if (Vector3.Distance(EnemyNav.transform.position, Player.position) <= 2.3f) {
+            Debug.Log(Vector3.Distance(EnemyNav.transform.position, Player.position));
             SceneManager.LoadScene(Scene);
             if (SceneManager.GetSceneByName(Scene).isLoaded) {
                 SceneManager.UnloadSceneAsync("Armin");
             }
+        }
+    }
+
+    public void Check_If_Moving(Vector3 LastPosition) {
+        float distanceMoved = Vector3.Distance(transform.position, LastPosition);
+
+        if (distanceMoved > 0.01f)
+        {
+            Debug.Log("Tester");
+            EnemyAnimator.SetBool("IsWalking", true);
+            IsMoving = true;
         }
     }
 }
