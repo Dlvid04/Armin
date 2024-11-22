@@ -56,6 +56,7 @@ public class Player_Finder : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Door"))
             {
+                Debug.Log(hit.collider.gameObject.name);
                 if (!hit.collider.gameObject.GetComponentInParent<DoorController>().isOpen && hit.collider.gameObject.name == "Rotator") {
                     hit.collider.gameObject.GetComponentInParent<DoorController>().SendMessage("ToggleDoor"); // Hier greift der Gegner auf T�ren zu !!! Zu Oft !!!
                 }
@@ -82,7 +83,6 @@ public class Player_Finder : MonoBehaviour
 
     public void Check_If_In_Range() {
         if (Vector3.Distance(EnemyNav.transform.position, Player.position) <= 2.3f) {
-            Debug.Log(Vector3.Distance(EnemyNav.transform.position, Player.position));
             SceneManager.LoadScene(Scene);
             if (SceneManager.GetSceneByName(Scene).isLoaded) {
                 SceneManager.UnloadSceneAsync("Armin");
