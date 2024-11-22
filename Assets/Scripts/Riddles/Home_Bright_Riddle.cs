@@ -11,13 +11,9 @@ public class Home_Bright_Riddle : MonoBehaviour
     public GameObject Riddle3;
 
     public float rayLength = 4f;
-    GameObject Enemy;
+    [SerializeField] GameObject Enemy;
 
 
-    void Start(){
-        Enemy = GameObject.Find("Enemy_Capsule");
-        Enemy.SetActive(false);
-    }
     // Update is called once per frame
     void Update()
     {
@@ -41,7 +37,7 @@ public class Home_Bright_Riddle : MonoBehaviour
                     if (FindFirstObjectByType<Inventory>().keyId == "key3" && hit.collider.gameObject.name == "Cube (2)")
                     {
                         Enemy.SetActive(true);
-                        Enemy.transform.GetChild(1).GetComponent<Player_Finder>().Scene = "Bright_Start";
+                        FindFirstObjectByType<Player_Finder>().Scene = "Bright_Start";
                     }
                 }
             }
