@@ -29,18 +29,19 @@ public class Player_Finder : MonoBehaviour
     bool IsMoving = false;
 
     void Start(){
-        EnemyNav.gameObject.SetActive(false);
+        EnemyNav.gameObject.SetActive(true);
     }
     // Update is called once per frame
     void Update()
     {
-        Door_Open_Close();
-        Falling();
-        EnemyNav.SetDestination(Player.position);
-        Check_If_In_Range();
-        if (!IsMoving) {
-            Check_If_Moving(EnemyTransform.position);
-        }
+            Door_Open_Close();
+            Falling();
+            EnemyNav.SetDestination(Player.position);
+            Check_If_In_Range();
+            if (!IsMoving)
+            {
+                Check_If_Moving(EnemyTransform.position);
+            }
     }
 
     public void CallMethod() {
@@ -94,8 +95,8 @@ public class Player_Finder : MonoBehaviour
 
         if (distanceMoved > 0.01f)
         {
-            Debug.Log("Tester");
             EnemyAnimator.SetBool("IsWalking", true);
+            EnemyAnimator.SetBool("IsStanding", false);
             IsMoving = true;
         }
     }
