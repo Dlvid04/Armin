@@ -29,7 +29,7 @@ public class Player_Finder : MonoBehaviour
     bool IsMoving = false;
 
     void Start(){
-        EnemyNav.gameObject.SetActive(true);
+        EnemyNav.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
