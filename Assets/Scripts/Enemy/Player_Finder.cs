@@ -98,6 +98,9 @@ public class Player_Finder : MonoBehaviour
             EnemyAnimator.SetBool("IsWalking", true);
             EnemyAnimator.SetBool("IsStanding", false);
             IsMoving = true;
-        }
+        }else
+            EnemyAnimator.SetBool("IsWalking", false);
+            EnemyAnimator.SetBool("IsStanding", true);
+            IsMoving = false;
     }
 }
