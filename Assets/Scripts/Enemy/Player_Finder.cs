@@ -9,8 +9,10 @@ using UnityEngine.SceneManagement;
 public class Player_Finder : MonoBehaviour
 {
     public CharacterController Controller;
-    public NavMeshAgent Enemy;
+    public NavMeshAgent EnemyNav;
     public Transform Player;
+    public Transform EnemyTransform;
+    public Animator EnemyAnimator;
 
     public float gravity = -9.8f;
 
@@ -24,13 +26,22 @@ public class Player_Finder : MonoBehaviour
 
     public string Scene;
 
+    bool IsMoving = false;
+
+    void Start(){
+        EnemyNav.gameObject.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {
-        Door_Open_Close();
-        Falling();
-        Enemy.SetDestination(Player.position);
-        Check_If_In_Range();
+            Door_Open_Close();
+            Falling();
+            EnemyNav.SetDestination(Player.position);
+            Check_If_In_Range();
+            if (!IsMoving)
+            {
+                Check_If_Moving(EnemyTransform.position);
+            }
     }
 
     public void CallMethod() {
@@ -38,15 +49,16 @@ public class Player_Finder : MonoBehaviour
     }
 
     public void Door_Open_Close() {
-        Ray ray = new Ray(Enemy.transform.position, Enemy.transform.forward);
+        Ray ray = new Ray(EnemyNav.transform.position, EnemyNav.transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, See_Range))
         {
             if (hit.collider.gameObject.CompareTag("Door"))
             {
+                Debug.Log(hit.collider.gameObject.name);
                 if (!hit.collider.gameObject.GetComponentInParent<DoorController>().isOpen && hit.collider.gameObject.name == "Rotator") {
-                    hit.collider.gameObject.GetComponentInParent<DoorController>().SendMessage("ToggleDoor"); // Hier greift der Gegner auf Türen zu !!! Zu Oft !!!
+                    hit.collider.gameObject.GetComponentInParent<DoorController>().SendMessage("ToggleDoor"); // Hier greift der Gegner auf Tï¿½ren zu !!! Zu Oft !!!
                 }
                 if (hit.collider.gameObject.transform.parent.parent.name == "Door_Home_Entrance")
                 {
@@ -70,11 +82,25 @@ public class Player_Finder : MonoBehaviour
     }
 
     public void Check_If_In_Range() {
-        if (Vector3.Distance(Enemy.transform.position, Player.position) <= 2.3f) {
+        if (Vector3.Distance(EnemyNav.transform.position, Player.position) <= 2.3f) {
             SceneManager.LoadScene(Scene);
             if (SceneManager.GetSceneByName(Scene).isLoaded) {
                 SceneManager.UnloadSceneAsync("Armin");
             }
         }
+    }
+
+    public void Check_If_Moving(Vector3 LastPosition) {
+        float distanceMoved = Vector3.Distance(transform.position, LastPosition);
+
+        if (distanceMoved > 0.01f)
+        {
+            EnemyAnimator.SetBool("IsWalking", true);
+            EnemyAnimator.SetBool("IsStanding", false);
+            IsMoving = true;
+        }else
+            EnemyAnimator.SetBool("IsWalking", false);
+            EnemyAnimator.SetBool("IsStanding", true);
+            IsMoving = false;
     }
 }
