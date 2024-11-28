@@ -36,6 +36,10 @@ public class Home_Bright_Riddle : MonoBehaviour
                     }
                     if (FindFirstObjectByType<Inventory>().keyId == "key3" && hit.collider.gameObject.name == "Cube (2)")
                     {
+                        GameObject.Find("Rust_Key (4)").GetComponent<Animator>().SetBool("Erscheinen", true);
+                    }
+                    if (FindFirstObjectByType<Inventory>().keyId == "key4" && hit.collider.gameObject.name == "Padlock") {
+                        GameObject.Find("Padlock").SetActive(false);
                         Enemy.SetActive(true);
                         FindFirstObjectByType<Player_Finder>().Scene = "Bright_Start";
                     }
