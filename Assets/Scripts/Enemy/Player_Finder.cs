@@ -17,20 +17,12 @@ public class Player_Finder : MonoBehaviour
     public Animator EnemyAnimator;
     public PlayableDirector PlayableDirector;
 
-    public float gravity = -9.8f;
-
-    public Transform GroundCheck;
-    public float GroundDistance = 0.4f;
-    public LayerMask GroundMask;
     public float See_Range = 4f;
-
-    Vector3 velocity;
-    bool isGrounded;
 
     public string Scene;
 
     void Start(){
-        EnemyTransform.gameObject.SetActive(true);
+        EnemyTransform.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -39,8 +31,9 @@ public class Player_Finder : MonoBehaviour
         if (PlayableDirector.state != PlayState.Playing) {
             EnemyNav.SetDestination(Player.position);
             Door_Open_Close();
-            Falling();
-            Check_If_In_Range();
+            if (Check_If_In_Range()) {
+                LoadNextScene();
+            }
         }
     }
 
@@ -67,33 +60,26 @@ public class Player_Finder : MonoBehaviour
         }
     }
 
-    public void Falling() {
-        isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
-
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-
-        Controller.Move(velocity * Time.deltaTime);
-    }
-
-    public void Check_If_In_Range() {
+    public bool Check_If_In_Range() {
         if (Vector3.Distance(EnemyNav.transform.position, Player.position) <= 2.3f) {
-            SceneManager.LoadScene(Scene);
-            if (SceneManager.GetSceneByName(Scene).isLoaded) {
-                SceneManager.UnloadSceneAsync("Armin");
-            }
+            EnemyAnimator.SetBool("IsWalking", false);
+            EnemyAnimator.SetBool("HoldingPlayer", true);
+            return true;
+        }else { 
+            return false; 
         }
     }
 
     public void Entrance() {
-        Vector3 currentPosition = EnemyTransform.position;
         if (PlayableDirector.state != PlayState.Playing) {
             EnemyAnimator.SetBool("IsWalking", true);
-            EnemyTransform.position = currentPosition;
+        }
+    }
+
+    public void LoadNextScene() {
+        SceneManager.LoadScene(Scene);
+        if (SceneManager.GetSceneByName(Scene).isLoaded) {
+            SceneManager.UnloadSceneAsync("Armin");
         }
     }
 }
