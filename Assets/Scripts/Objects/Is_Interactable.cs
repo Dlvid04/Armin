@@ -6,7 +6,7 @@ using UnityEngine;
 public class Is_Interactable : MonoBehaviour
 {
     private GameObject Crosshair;
-    public float rayLength = 4f;
+    public IsLookingAt LA;
 
     // Start is called before the first frame update
     void Start()
@@ -18,18 +18,10 @@ public class Is_Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, rayLength)) {
-            if (hit.collider.gameObject.CompareTag("Interactable") || hit.collider.gameObject.CompareTag("Door") || hit.collider.gameObject.CompareTag("Portable")) {
+        if (LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Interactable") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Door") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Portable")) {
                 Crosshair.SetActive(true);
-            }
-            else { 
+            } else { 
                 Crosshair.SetActive(false); 
-            }
-        }else {
-            Crosshair.SetActive(false);
-        }
+        }        
     }
 }
