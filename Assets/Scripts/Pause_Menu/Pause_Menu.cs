@@ -9,29 +9,35 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI;
-    public GameObject OptionMenuUI;
-    public GameObject SteuerungMenuUI;
-    public GameObject CrossHair;
+    public GameObject pauseMenuUI,OptionMenuUI,SteuerungMenuUI,CrossHair;
     public bool isPaused = false;
     public AudioMixer audioMixer;
     public Volume Volume;
-    private ColorAdjustments colorAdjustments;
+    ColorAdjustments colorAdjustments;
+    float gamma;
+    const string VolumePrefKey = "Volume",GammaPrefKey = "Gamma";
+    public Laptop LPScript;
+    public Slider VolumeSlider,BrightnessSlider;
+
+
+    void Start(){
+        float savedGamma = PlayerPrefs.GetFloat(GammaPrefKey, 0f); // Standardwert: 0
+        SetBrightness(savedGamma);
+        BrightnessSlider.value = savedGamma;
+        float savedVolume = PlayerPrefs.GetFloat(VolumePrefKey, 0f); // Standardwert: 0
+        SetVolume(savedVolume);
+        VolumeSlider.value = savedVolume;
+    }
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && !isPaused) {
             ActivateMenu();
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            CrossHair.SetActive(false);
         } else if(Input.GetKeyDown(KeyCode.Escape) && isPaused) {
             DeactivateMenu();
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            CrossHair.SetActive(true);
         }
     }
     void ActivateMenu()
@@ -40,8 +46,11 @@ public class PauseMenu : MonoBehaviour
         AudioListener.pause = true;
         pauseMenuUI.SetActive(true);
         isPaused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        CrossHair.SetActive(false);
     }
-    void DeactivateMenu()
+    public void DeactivateMenu()
     {
         AudioListener.pause = false;
         Time.timeScale = 1f;
@@ -49,6 +58,11 @@ public class PauseMenu : MonoBehaviour
         OptionMenuUI.SetActive(false);
         SteuerungMenuUI.SetActive(false);
         isPaused = false;
+        if(LPScript.IsOnLaptop == false || LPScript == null){
+            CrossHair.SetActive(true);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public void Zurück(){
@@ -74,7 +88,13 @@ public class PauseMenu : MonoBehaviour
     //---Menü---
     //---Einstellungen---
     public void SetVolume(float volume){
-        audioMixer.SetFloat("Volume",volume);
+        audioMixer.SetFloat("Volume", volume);
+        PlayerPrefs.SetFloat(VolumePrefKey, volume);
+        PlayerPrefs.Save();
+        if (VolumeSlider != null)
+        {
+            VolumeSlider.value = volume;
+        }
     }
 
     public void SetFullScreen(bool isFullScreen){
@@ -82,9 +102,14 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void SetBrightness (float gamma){
-        if(Volume.profile.TryGet<ColorAdjustments>(out colorAdjustments)){
+        this.gamma = gamma;
+        PlayerPrefs.SetFloat("Gamma", gamma);
+        if (Volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
+        {
             colorAdjustments.postExposure.value = gamma;
         }
     }
     //---Einstellungen---
+
+
 }

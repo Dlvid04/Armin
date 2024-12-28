@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Is_Interactable : MonoBehaviour
 {
-    private GameObject Crosshair;
+    GameObject Crosshair;
     public IsLookingAt LA;
 
     // Start is called before the first frame update
@@ -18,10 +18,11 @@ public class Is_Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Interactable") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Door") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Portable")) {
+        if (LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Interactable") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Door") 
+            || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Portable") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Laptop")) {
                 Crosshair.SetActive(true);
-            } else { 
+        } else { 
                 Crosshair.SetActive(false); 
-        }        
+        }
     }
 }
