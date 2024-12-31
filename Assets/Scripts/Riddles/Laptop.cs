@@ -6,15 +6,17 @@ using UnityEngine;
 public class Laptop : MonoBehaviour
 {
     public Camera PlayerCamera;
-    public Transform CameraHolderLaptop;
-    public Transform CameraHolderPlayer;
+    public Transform CameraHolderLaptop,CameraHolderPlayer;
     public IsLookingAt LA;
     public Player_Camera PCScript;
     public Player_Movement PMScript;
-    public GameObject ToDOListeUI,EMailUI,EMailButton,ToDoListeButton,CrossHairUI,LaptopUI;
+    public GameObject ToDOListeUI,EMailUI,EMailButton,ToDoListeButton,CrossHairUI,LaptopUI,InventoryUI;
     bool EmailButtonPressed,ToDoButtonPressed;
     public bool IsOnLaptop;
 
+    void Start(){
+        LaptopUI.SetActive(false);
+    }
     void Update(){
         if(LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Laptop") && IsOnLaptop == false){
             if (Input.GetKeyDown("e")){
@@ -35,7 +37,7 @@ public class Laptop : MonoBehaviour
         PCScript.enabled = false;
         PMScript.enabled = false;
         CrossHairUI.SetActive(false);
-        LaptopUI.SetActive(true);
+        InventoryUI.SetActive(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -48,7 +50,7 @@ public class Laptop : MonoBehaviour
         PCScript.enabled = true;
         PMScript.enabled = true;
         CrossHairUI.SetActive(true);
-        LaptopUI.SetActive(false);
+        InventoryUI.SetActive(true);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

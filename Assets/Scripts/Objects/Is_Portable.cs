@@ -18,7 +18,6 @@ public class Is_Portable : MonoBehaviour
                 {
                     LA.LookingAt().transform.SetParent(Inventory.Slot1, false);
                     Inventory.Slot1.GetChild(0).transform.localPosition = Vector3.zero;
-                    Inventory.Slot1.GetChild(0).transform.localScale = Vector3.one;
                     Inventory.Slot1.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
                     Inventory.Slot1_Belegt = true;
                     Inventory.Slot_Switchen(1);
@@ -30,7 +29,6 @@ public class Is_Portable : MonoBehaviour
                 {
                     LA.LookingAt().transform.SetParent(Inventory.Slot2, false);
                     Inventory.Slot2.GetChild(0).transform.localPosition = Vector3.zero;
-                    Inventory.Slot2.GetChild(0).transform.localScale = Vector3.one;
                     Inventory.Slot2.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
                     Inventory.Slot2_Belegt = true;
                     Inventory.Slot_Switchen(2);
@@ -42,7 +40,6 @@ public class Is_Portable : MonoBehaviour
                 {
                     LA.LookingAt().transform.SetParent(Inventory.Slot1, false);
                     Inventory.Slot1.GetChild(0).transform.localPosition = Vector3.zero;
-                    Inventory.Slot1.GetChild(0).transform.localScale = Vector3.one;
                     Inventory.Slot1.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
                     Inventory.Slot1_Belegt = true;
                     Inventory.Slot_Switchen(1);
