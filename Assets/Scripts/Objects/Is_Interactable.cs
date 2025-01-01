@@ -19,7 +19,7 @@ public class Is_Interactable : MonoBehaviour
     void Update()
     {
         if (LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Interactable") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Door") 
-            || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Portable") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Laptop")) {
+            || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Portable")) {
                 Crosshair.SetActive(true);
         } else { 
                 Crosshair.SetActive(false); 

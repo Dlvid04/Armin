@@ -18,7 +18,7 @@ public class Laptop : MonoBehaviour
         LaptopUI.SetActive(false);
     }
     void Update(){
-        if(LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Laptop") && IsOnLaptop == false){
+        if(LA.LookingAt() != null &&  LA.LookingAt().name == "Laptop" && IsOnLaptop == false){
             if (Input.GetKeyDown("e")){
                 LaptopAn();
                 IsOnLaptop = true;
