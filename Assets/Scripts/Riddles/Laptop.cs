@@ -66,7 +66,7 @@ public class Laptop : MonoBehaviour
             ToDoButtonPressed = true;
         }
     }
-        public void EMailButtonEnter(){
+    public void EMailButtonEnter(){
         if(EmailButtonPressed){
             ToDoListeButton.SetActive(true);
             EMailUI.SetActive(false);
