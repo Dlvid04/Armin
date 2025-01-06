@@ -12,14 +12,11 @@ public class Player_Finder : MonoBehaviour
 {
     public CharacterController Controller;
     public NavMeshAgent EnemyNav;
-    public Transform Player;
-    public Transform EnemyTransform;
+    public Transform Player, EnemyTransform;
     public Animator EnemyAnimator;
     public PlayableDirector PlayableDirector;
-
     public float See_Range = 4f;
-
-    public string Scene;
+    public string Scene = "Bright_Start";
 
     void Start(){
         EnemyTransform.gameObject.SetActive(false);
@@ -37,7 +34,11 @@ public class Player_Finder : MonoBehaviour
         }
     }
 
-    public void CallMethod() {
+    public void EnemySpawn() {
+        EnemyTransform.gameObject.SetActive(true);
+    }
+
+    public void Türschließen() {
         GameObject.Find("Door_Home_Entrance").transform.GetChild(1).GetComponentInParent<DoorController>().SendMessage("ToggleDoor");
     }
 
@@ -54,7 +55,7 @@ public class Player_Finder : MonoBehaviour
                 }
                 if (hit.collider.gameObject.transform.parent.name == "Door_Home_Entrance")
                 {
-                    Invoke("CallMethod", 1f);
+                    Invoke("Türschließen", 1f);
                 }
             }
         }

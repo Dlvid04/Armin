@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class ClockRiddle : MonoBehaviour
 {
-    public GameObject MinutHand,HourHand,CrossHairUI,InventoryUI,ClockUI;
+    public WaschmaschinenRätsel WaschmaschinenRätsel;
+    public GameObject MinutHand,HourHand,Clock,CrossHairUI,InventoryUI,ClockUI,Waschmaschine;
     public Transform MinutHandHolder,HourHandHolder,CameraHolderClock,CameraHolderPlayer;
     public Inventory PlayerInventory;
     public IsLookingAt LA;
@@ -17,33 +18,34 @@ public class ClockRiddle : MonoBehaviour
 
     void Start(){
         ClockUI.SetActive(false);
+        Waschmaschine.tag = tag.Normalize();
     }
     void Update()
     { 
         if(LA.LookingAt() != null && LA.LookingAt().name == "Clock" && PlayerInventory.Slot1_Angezeigt && Input.GetKeyDown("e")){
-            if(PlayerInventory.Slot1.childCount > 0 && PlayerInventory.Slot1.GetChild(0).name == "MinuteHand"){
-                PlayerInventory.GegenstandVerwenden(PlayerInventory.Slot1.GetChild(0).name);
-                PlayerInventory.GegenstandImInventarSuchen("MinuteHand").SetParent(MinutHandHolder,false);
+            if(PlayerInventory.ObjectHolder1.childCount > 0 && PlayerInventory.ObjectHolder1.GetChild(0).name == "Minuten Zeiger"){
+                PlayerInventory.GegenstandVerwenden(PlayerInventory.ObjectHolder1.GetChild(0).name);
+                PlayerInventory.GegenstandImInventarTransform("Minuten Zeiger").SetParent(MinutHandHolder,false);
                 MinutHandHolder.GetChild(0).transform.localPosition = Vector3.zero;
                 MinutHandHolder.GetChild(0).transform.localRotation = Quaternion.identity;
                 MinutHandHolder.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
-            }else if(PlayerInventory.Slot1.childCount > 0 && PlayerInventory.Slot1.GetChild(0).name == "HourHand"){
-                PlayerInventory.GegenstandVerwenden(PlayerInventory.Slot1.GetChild(0).name);
-                PlayerInventory.GegenstandImInventarSuchen("HourHand").SetParent(HourHandHolder,false);
+            }else if(PlayerInventory.ObjectHolder1.childCount > 0 && PlayerInventory.ObjectHolder1.GetChild(0).name == "Stunden Zeiger"){
+                PlayerInventory.GegenstandVerwenden(PlayerInventory.ObjectHolder1.GetChild(0).name);
+                PlayerInventory.GegenstandImInventarTransform("Stunden Zeiger").SetParent(HourHandHolder,false);
                 HourHandHolder.GetChild(0).transform.localPosition = Vector3.zero;
                 HourHandHolder.GetChild(0).transform.localRotation = Quaternion.identity;
                 HourHandHolder.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
             }
         }else if(LA.LookingAt() != null && LA.LookingAt().name == "Clock" && PlayerInventory.Slot2_Angezeigt && Input.GetKeyDown("e")){
-            if(PlayerInventory.Slot2.childCount > 0 && PlayerInventory.Slot2.GetChild(0).name == "MinuteHand"){
-                PlayerInventory.GegenstandVerwenden(PlayerInventory.Slot2.GetChild(0).name);
-                PlayerInventory.GegenstandImInventarSuchen("MinuteHand").SetParent(MinutHandHolder,false);
+            if(PlayerInventory.ObjectHolder2.childCount > 0 && PlayerInventory.ObjectHolder2.GetChild(0).name == "Minuten Zeiger") {
+                PlayerInventory.GegenstandVerwenden(PlayerInventory.ObjectHolder2.GetChild(0).name);
+                PlayerInventory.GegenstandImInventarTransform("Minuten Zeiger").SetParent(MinutHandHolder,false);
                 MinutHandHolder.GetChild(0).transform.localPosition = Vector3.zero;
                 MinutHandHolder.GetChild(0).transform.localRotation = Quaternion.identity;
                 MinutHandHolder.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
-            }else if(PlayerInventory.Slot2.childCount > 0 && PlayerInventory.Slot2.GetChild(0).name == "HourHand"){
-                PlayerInventory.GegenstandVerwenden(PlayerInventory.Slot2.GetChild(0).name);
-                PlayerInventory.GegenstandImInventarSuchen("HourHand").SetParent(HourHandHolder,false);
+            }else if(PlayerInventory.ObjectHolder2.childCount > 0 && PlayerInventory.ObjectHolder2.GetChild(0).name == "Stunden Zeiger") {
+                PlayerInventory.GegenstandVerwenden(PlayerInventory.ObjectHolder2.GetChild(0).name);
+                PlayerInventory.GegenstandImInventarTransform("Stunden Zeiger").SetParent(HourHandHolder,false);
                 HourHandHolder.GetChild(0).transform.localPosition = Vector3.zero;
                 HourHandHolder.GetChild(0).transform.localRotation = Quaternion.identity;
                 HourHandHolder.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
@@ -61,7 +63,7 @@ public class ClockRiddle : MonoBehaviour
                 IsOnClock = false;
             }
         }
-
+        CheckIfFinished();
     }
 
     public void UhrAn(){
@@ -92,11 +94,27 @@ public class ClockRiddle : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void zeigerVorstellen(){
-
+    public void CheckIfFinished() {
+        if (Quaternion.Angle(MinutHand.transform.localRotation, Quaternion.Euler(0, 0, 150)) < 0.1f && Quaternion.Angle(HourHand.transform.localRotation, Quaternion.Euler(0, 0, -90)) < 0.1f) {
+            WaschmaschinenRätsel.enabled = true;
+            Waschmaschine.tag = "Interactable";
+            Clock.tag = tag.Normalize();
+            UhrAus();
+            enabled = false;
+        }
     }
 
-    public void zeigerZurükstellen(){
+    public void ZeigerVorstellen(GameObject gameObject){
+        if (gameObject.name == "Stunden Zeiger") {
+            gameObject.transform.localRotation *= Quaternion.Euler(0, 0, 30);
+        }else
+            gameObject.transform.localRotation *= Quaternion.Euler(0, 0, 5);
+    }
 
+    public void ZeigerZurükstellen(GameObject gameObject) {
+        if (gameObject.name == "Stunden Zeiger") {
+            gameObject.transform.localRotation *= Quaternion.Euler(0, 0, -30);
+        } else
+            gameObject.transform.localRotation *= Quaternion.Euler(0, 0, -5);
     }
 }

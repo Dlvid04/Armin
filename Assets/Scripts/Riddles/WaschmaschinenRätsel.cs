@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class WaschmaschinenRätsel : MonoBehaviour
 {
-    public GameObject CrossHairUI,InventoryUI,WaschmaschinenUI,GoldKey;
+    public GameObject CrossHairUI,InventoryUI,WaschmaschinenUI,GoldKey,Waschmaschine;
     public TextMeshProUGUI AnzeigenText,RundenCounterText;
     public Transform Tür,Zeiger,CameraHolderPlayer,CameraHolderWaschmaschine;
     public Button BlueButton,RedButton,GreenButton,YellowButton,PurpleButton;
@@ -30,6 +30,7 @@ public class WaschmaschinenRätsel : MonoBehaviour
         GreenButton.GetComponent<Button>().enabled = false;
         YellowButton.GetComponent<Button>().enabled = false;
         RedButton.GetComponent<Button>().enabled = false;
+        AnzeigenTextAusgeben();
     }
     void Update(){
         if(LA.LookingAt() != null &&  LA.LookingAt().name == "Waschmaschine" && isOnWaschmaschine == false){
@@ -107,31 +108,11 @@ public class WaschmaschinenRätsel : MonoBehaviour
             Tür.transform.localPosition = new Vector3(-1.6f,0.7f,-0.559f);
             Tür.transform.localRotation = Quaternion.Euler(0,90,0);
             GoldKey.transform.localPosition = new Vector3(-1.6f,0.77f,-0.7f);
-        }else Debug.Log("Nicht Geschafft");
-    }
-    public void StartSimonSays(){
-        simonsaysRundenInput.Clear();
-        userInput.Clear();
-        SimonSaysScreen();
-
-        if (runde == 1){
-            simonsaysRundenInput.Add(0);  // Blau
-            simonsaysRundenInput.Add(1);  // Rot
-            simonsaysRundenInput.Add(4);  // Lila
-        }else if (runde == 2){
-            simonsaysRundenInput.Add(1);  // Rot
-            simonsaysRundenInput.Add(2);  // Grün
-            simonsaysRundenInput.Add(4);  // Lila
-            simonsaysRundenInput.Add(3);  // Gelb
-        }else if (runde == 3){
-            simonsaysRundenInput.Add(4);  // Lila
-            simonsaysRundenInput.Add(0);  // Blau
-            simonsaysRundenInput.Add(3);  // Gelb
-            simonsaysRundenInput.Add(1);  // Rot
-            simonsaysRundenInput.Add(2);  // Grün
+            WaschmaschineAus();
+            Waschmaschine.tag = tag.Normalize();
+            enabled = false;
         }
-    }
-    
+    }    
     public void ZeigerÄndernHoch(){
         if(x == 14){
             x = 1;
@@ -179,6 +160,29 @@ public class WaschmaschinenRätsel : MonoBehaviour
             Zeiger.localRotation = Quaternion.Euler(0, 0, -332);
         }
     }
+    public void StartSimonSays() {
+        simonsaysRundenInput.Clear();
+        userInput.Clear();
+        SimonSaysScreen();
+
+        if (runde == 1) {
+            simonsaysRundenInput.Add(0);  // Blau
+            simonsaysRundenInput.Add(1);  // Rot
+            simonsaysRundenInput.Add(4);  // Lila
+        } else if (runde == 2) {
+            simonsaysRundenInput.Add(1);  // Rot
+            simonsaysRundenInput.Add(2);  // Grün
+            simonsaysRundenInput.Add(4);  // Lila
+            simonsaysRundenInput.Add(3);  // Gelb
+        } else if (runde == 3) {
+            simonsaysRundenInput.Add(4);  // Lila
+            simonsaysRundenInput.Add(0);  // Blau
+            simonsaysRundenInput.Add(3);  // Gelb
+            simonsaysRundenInput.Add(1);  // Rot
+            simonsaysRundenInput.Add(2);  // Grün
+        }
+    }
+
     public void SimonSaysEingabe(){
         BlueButton.GetComponent<Button>().enabled = true;
         RedButton.GetComponent<Button>().enabled = true;
