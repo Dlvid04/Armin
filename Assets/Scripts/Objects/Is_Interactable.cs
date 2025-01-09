@@ -18,8 +18,7 @@ public class Is_Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Interactable") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Door") 
-            || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Portable")) {
+        if (LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Interactable") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Door") || LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Portable")) {
                 Crosshair.SetActive(true);
         } else { 
                 Crosshair.SetActive(false); 

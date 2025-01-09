@@ -104,7 +104,7 @@ public class WaschmaschinenRätsel : MonoBehaviour
     }
 
     public void StartKorrektur(){
-        if(temperatur == 60 && schleudern == "Aus" && vorwäsche == "An" && schnellewäsche == "An" && simonSaysGeschafft == true){
+        if(temperatur == 60 && schleudern == "Aus" && vorwäsche == "Aus" && schnellewäsche == "An" && simonSaysGeschafft == true && Zeiger.localRotation == Quaternion.Euler(0, 0, -290)) {
             Tür.transform.localPosition = new Vector3(-1.6f,0.7f,-0.559f);
             Tür.transform.localRotation = Quaternion.Euler(0,90,0);
             GoldKey.transform.localPosition = new Vector3(-1.6f,0.77f,-0.7f);

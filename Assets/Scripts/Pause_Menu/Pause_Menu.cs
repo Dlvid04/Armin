@@ -13,7 +13,7 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI,OptionMenuUI,SteuerungMenuUI,CrossHair;
+    public GameObject pauseMenuUI,OptionMenuUI,SteuerungMenuUI,CrossHair,InventoryUI;
     public bool isPaused = false;
     public AudioMixer audioMixer;
     public Volume Volume;
@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
         float savedGamma = PlayerPrefs.GetFloat(GammaPrefKey, 0f); // Standardwert: 0
         SetBrightness(savedGamma);
         BrightnessSlider.value = savedGamma;
+
         float savedVolume = PlayerPrefs.GetFloat(VolumePrefKey, 0f); // Standardwert: 0
         SetVolume(savedVolume);
         VolumeSlider.value = savedVolume;
@@ -49,6 +50,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         CrossHair.SetActive(false);
+        InventoryUI.SetActive(false);
     }
     public void DeactivateMenu()
     {
@@ -58,7 +60,8 @@ public class PauseMenu : MonoBehaviour
         OptionMenuUI.SetActive(false);
         SteuerungMenuUI.SetActive(false);
         isPaused = false;
-        if(LPScript.IsOnLaptop == false || LPScript == null){
+        InventoryUI.SetActive(true);
+        if (LPScript.IsOnLaptop == false || LPScript == null){
             CrossHair.SetActive(true);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

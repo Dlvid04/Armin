@@ -94,8 +94,10 @@ public class Inventory : MonoBehaviour
     public void GegenstandVerwenden(string GegenstandsNamen){
         if(ObjectHolder1.GetChild(0) != null && ObjectHolder1.GetChild(0).name == GegenstandsNamen){
             Slot1_Belegt = false;
+            Slot1Text.text = "";
         }else if(ObjectHolder2.GetChild(0) != null && ObjectHolder2.GetChild(0).name == GegenstandsNamen){
             Slot2_Belegt = false;
+            Slot2Text.text = "";
         }
     }
 }
