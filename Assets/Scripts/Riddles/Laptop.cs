@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class Laptop : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Laptop : MonoBehaviour
     public Player_Camera PCScript;
     public Player_Movement PMScript;
     public GameObject ToDOListeUI,EMailUI,EMailButton,ToDoListeButton,CrossHairUI,LaptopUI,InventoryUI;
+    public TextMeshProUGUI ToDOListeText,EMailText;
     bool EmailButtonPressed,ToDoButtonPressed;
     public bool IsOnLaptop;
 
@@ -21,10 +23,8 @@ public class Laptop : MonoBehaviour
         if(LA.LookingAt() != null &&  LA.LookingAt().name == "Laptop" && IsOnLaptop == false && LA.LookingAt().tag == "Interactable"){
             if (Input.GetKeyDown("e")){
                 LaptopAn();
-                IsOnLaptop = true;
             }
         }else if(IsOnLaptop == true && Input.GetKeyDown("e")){
-            IsOnLaptop = false;
             LaptopAus();
         }
 
@@ -40,6 +40,7 @@ public class Laptop : MonoBehaviour
         InventoryUI.SetActive(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        IsOnLaptop = true;
     }
 
     public void LaptopAus(){
@@ -53,6 +54,7 @@ public class Laptop : MonoBehaviour
         InventoryUI.SetActive(true);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        IsOnLaptop = false;
     }
 
     public void ToDoListeButtonEnter(){

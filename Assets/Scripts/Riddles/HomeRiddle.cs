@@ -1,13 +1,17 @@
+using NavKeypad;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Home_Bright_Riddle : MonoBehaviour
+public class HomeRiddle : MonoBehaviour
 {
     public GameObject BibelBright, BibelDark, Laptop, Clock, NachtTischSchloss;
     public ClockRiddle ClockRiddle;
+    public Laptop LaptopScript;
+    public WaschmaschinenRätsel WaschmaschinenScript;
+    public Keypad KeypadScript;
     public Inventory Inventory;
     public Animator NachtTischController;
     public IsLookingAt LA;
@@ -16,13 +20,13 @@ public class Home_Bright_Riddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LA.LookingAt() != null && LA.LookingAt().name == "bibleBright") {
+        if (LA.LookingAt() != null && LA.LookingAt().name == "BibleBright") {
             if (Input.GetKeyDown("e"))
             {
                 Bright();
                 Riddle();
             }
-        }else if(LA.LookingAt() != null && LA.LookingAt().name == "bibleDark"){
+        }else if(LA.LookingAt() != null && LA.LookingAt().name == "BibleDark"){
             if (Input.GetKeyDown("e"))
             {
                 Dark();
@@ -36,6 +40,8 @@ public class Home_Bright_Riddle : MonoBehaviour
                 NachtTischController.SetBool("isOpen_Obj_1",true);
             }
         }
+
+        IsOnSomething();
     }
 
 
@@ -56,5 +62,23 @@ public class Home_Bright_Riddle : MonoBehaviour
         Laptop.tag = "Interactable";
         Clock.tag = "Interactable";
         ClockRiddle.enabled = true;
+    }
+
+    public bool IsOnSomething() {
+        if (ClockRiddle.IsOnClock == true || LaptopScript.IsOnLaptop == true || WaschmaschinenScript.isOnWaschmaschine == true || KeypadScript.onKeyPad == true) {
+            return true;
+        } else return false;
+    }
+
+    public GameObject IsOnWhat() { //Schaut am welchen obj der Spieler gerade ist
+        if (ClockRiddle.IsOnClock == true) {
+            return ClockRiddle.GameObject();
+        } else if (LaptopScript.IsOnLaptop == true) {
+            return LaptopScript.GameObject();
+        } else if (WaschmaschinenScript.isOnWaschmaschine == true) {
+            return WaschmaschinenScript.GameObject();
+        } else if (KeypadScript.onKeyPad == true) {
+            return KeypadScript.GameObject();
+        } else return null;
     }
 }

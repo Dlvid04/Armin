@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class ClockRiddle : MonoBehaviour
 {
     public WaschmaschinenRätsel WaschmaschinenRätsel;
-    public GameObject MinutHand,HourHand,Clock,CrossHairUI,InventoryUI,ClockUI,Waschmaschine;
+    public GameObject MinutHand,HourHand,Clock,CrossHairUI,InventoryUI,ClockUI,Waschmaschine,laptop;
     public Transform MinutHandHolder,HourHandHolder,CameraHolderClock,CameraHolderPlayer;
     public Inventory PlayerInventory;
     public IsLookingAt LA;
     public Player_Camera PCScript;
     public Player_Movement PMScript;
     public Camera PlayerCamera;
-    bool IsOnClock;
+    public bool IsOnClock;
 
     void Start(){
         ClockUI.SetActive(false);
@@ -56,11 +56,9 @@ public class ClockRiddle : MonoBehaviour
             if(LA.LookingAt() != null && LA.LookingAt().name == "Clock" && IsOnClock == false){
                 if(Input.GetKeyDown("e")){
                     UhrAn();
-                    IsOnClock = true;
                 }
             }else if(IsOnClock == true && Input.GetKeyDown("e")){
                 UhrAus();
-                IsOnClock = false;
             }
         }
         CheckIfFinished();
@@ -78,6 +76,7 @@ public class ClockRiddle : MonoBehaviour
         InventoryUI.SetActive(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        IsOnClock = true;
     }
 
         public void UhrAus(){
@@ -92,6 +91,7 @@ public class ClockRiddle : MonoBehaviour
         InventoryUI.SetActive(true);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.None;
+        IsOnClock = false;
     }
 
     public void CheckIfFinished() {
@@ -99,6 +99,8 @@ public class ClockRiddle : MonoBehaviour
             WaschmaschinenRätsel.enabled = true;
             Waschmaschine.tag = "Interactable";
             Clock.tag = tag.Normalize();
+            laptop.GetComponent<Laptop>().ToDOListeText.text = "";
+            laptop.GetComponent<Laptop>().EMailText.gameObject.SetActive(true);
             UhrAus();
             enabled = false;
         }

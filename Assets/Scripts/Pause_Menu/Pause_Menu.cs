@@ -1,3 +1,4 @@
+using NavKeypad;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,15 +14,17 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI,OptionMenuUI,SteuerungMenuUI,CrossHair,InventoryUI;
+    public GameObject pauseMenuUI,OptionMenuUI,SteuerungMenuUI,CrossHair,InventoryUI,ClockUI,WaschmaschinenUI;
     public bool isPaused = false;
     public AudioMixer audioMixer;
     public Volume Volume;
     ColorAdjustments colorAdjustments;
     float gamma;
     const string VolumePrefKey = "Volume",GammaPrefKey = "Gamma";
-    public Laptop LPScript;
     public Slider VolumeSlider,BrightnessSlider;
+    public HomeRiddle HomeRiddle;
+    public ClockRiddle ClockRiddle;
+    public WaschmaschinenRätsel WaschmaschinenRätsel;
 
 
     void Start(){
@@ -51,6 +54,12 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         CrossHair.SetActive(false);
         InventoryUI.SetActive(false);
+        if (HomeRiddle.IsOnSomething()) {
+            try {
+                HomeRiddle.IsOnWhat().transform.Find("UI").gameObject.SetActive(false);
+            } catch (System.Exception) {
+            }
+        }
     }
     public void DeactivateMenu()
     {
@@ -61,7 +70,14 @@ public class PauseMenu : MonoBehaviour
         SteuerungMenuUI.SetActive(false);
         isPaused = false;
         InventoryUI.SetActive(true);
-        if (LPScript.IsOnLaptop == false || LPScript == null){
+        if (HomeRiddle.IsOnSomething()) {
+            try {
+                HomeRiddle.IsOnWhat().transform.Find("UI").gameObject.SetActive(true);
+            } catch (System.Exception) {
+            }
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        } else {
             CrossHair.SetActive(true);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

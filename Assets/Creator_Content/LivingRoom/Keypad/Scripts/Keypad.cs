@@ -14,7 +14,7 @@ namespace NavKeypad
         public Player_Movement PMScript;
         public Transform CameraHolderPlayer, CameraHolderKeyPad;
         public IsLookingAt LA;
-        bool onKeyPad;
+        public bool onKeyPad;
 
         [Header("Events")]
         [SerializeField] private UnityEvent onAccessGranted;

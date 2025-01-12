@@ -36,10 +36,8 @@ public class WaschmaschinenRätsel : MonoBehaviour
         if(LA.LookingAt() != null &&  LA.LookingAt().name == "Waschmaschine" && isOnWaschmaschine == false){
             if (Input.GetKeyDown("e")){
                 WaschmaschineAn();
-                isOnWaschmaschine = true;
             }
         }else if(isOnWaschmaschine == true && Input.GetKeyDown("e")){
-            isOnWaschmaschine = false;
             WaschmaschineAus();
         }
     }
@@ -56,6 +54,7 @@ public class WaschmaschinenRätsel : MonoBehaviour
         WaschmaschinenUI.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        isOnWaschmaschine = false;
     }
     public void WaschmaschineAn(){
         PlayerCamera.transform.SetParent(CameraHolderWaschmaschine,true);
@@ -69,6 +68,7 @@ public class WaschmaschinenRätsel : MonoBehaviour
         WaschmaschinenUI.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        isOnWaschmaschine = true;
     }
 
     public void AnzeigenTextAusgeben(){
