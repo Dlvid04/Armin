@@ -19,7 +19,6 @@ public class DoorController : MonoBehaviour
         // Überprüfe, ob gerade eine Animation läuft
         if (isAnimating)
         {
-            Debug.Log("Die Tür ist noch in Bewegung. Warte, bis die Animation abgeschlossen ist.");
             return;
         }
 
@@ -79,7 +78,6 @@ public class DoorController : MonoBehaviour
     private void FinishAnimation()
     {
         isAnimating = false;  // Animation ist abgeschlossen, Tür kann wieder gesteuert werden
-        Debug.Log("Animation beendet. Türstatus: " + (isOpen ? "offen" : "geschlossen"));
     }
 
 
