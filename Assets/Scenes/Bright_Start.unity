@@ -1523,6 +1523,83 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &36915025
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_Name
+      value: Cross pot pine plant prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -38.357
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.963713
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.409
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 332026c5f18a75e419e365dc721676de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -9.62
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 332026c5f18a75e419e365dc721676de, type: 3}
 --- !u!1 &37910366
 GameObject:
   m_ObjectHideFlags: 0
@@ -30689,8 +30766,8 @@ Transform:
   m_GameObject: {fileID: 555136478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.37999916, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6356939421982396832}
@@ -30863,6 +30940,9 @@ MonoBehaviour:
   Clock: {fileID: 2143784966}
   NachtTischSchloss: {fileID: 0}
   ClockRiddle: {fileID: 683325746}
+  LaptopScript: {fileID: 0}
+  WaschmaschinenScript: {fileID: 0}
+  KeypadScript: {fileID: 0}
   Inventory: {fileID: 936610086}
   NachtTischController: {fileID: 732552215}
   LA: {fileID: 936610091}
@@ -37491,6 +37571,7 @@ MonoBehaviour:
   InventoryUI: {fileID: 1855937891}
   ClockUI: {fileID: 1223742170}
   Waschmaschine: {fileID: 1549823825}
+  laptop: {fileID: 0}
   MinutHandHolder: {fileID: 606615716}
   HourHandHolder: {fileID: 2020218042}
   CameraHolderClock: {fileID: 1729184918}
@@ -37500,6 +37581,7 @@ MonoBehaviour:
   PCScript: {fileID: 363262838}
   PMScript: {fileID: 936610088}
   PlayerCamera: {fileID: 363262839}
+  IsOnClock: 0
 --- !u!1 &685497164
 GameObject:
   m_ObjectHideFlags: 0
@@ -68915,6 +68997,63 @@ Transform:
   - {fileID: 1993417753}
   m_Father: {fileID: 1895772398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1297036420
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_Name
+      value: All plants
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -44.564426
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33.04998
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10921d6049a7eb64bb47242accd6fb99, type: 3}
 --- !u!1 &1297662551
 GameObject:
   m_ObjectHideFlags: 0
@@ -91798,12 +91937,16 @@ MonoBehaviour:
   SteuerungMenuUI: {fileID: 1387776258}
   CrossHair: {fileID: 524949484}
   InventoryUI: {fileID: 1855937891}
+  ClockUI: {fileID: 0}
+  WaschmaschinenUI: {fileID: 0}
   isPaused: 0
   audioMixer: {fileID: 24100000, guid: 3e276364764166349877314a3c24eb08, type: 2}
   Volume: {fileID: 921383247}
-  LPScript: {fileID: 1958067494}
   VolumeSlider: {fileID: 100046538}
   BrightnessSlider: {fileID: 289579129}
+  HomeRiddle: {fileID: 0}
+  ClockRiddle: {fileID: 0}
+  "WaschmaschinenR\xE4tsel": {fileID: 0}
 --- !u!4 &1728369687
 Transform:
   m_ObjectHideFlags: 0
@@ -102174,6 +102317,8 @@ MonoBehaviour:
   CrossHairUI: {fileID: 524949484}
   LaptopUI: {fileID: 1306934001}
   InventoryUI: {fileID: 1855937891}
+  ToDOListeText: {fileID: 0}
+  EMailText: {fileID: 0}
   IsOnLaptop: 0
 --- !u!65 &1958067495
 BoxCollider:
@@ -126567,3 +126712,5 @@ SceneRoots:
   - {fileID: 734343175}
   - {fileID: 1228689012}
   - {fileID: 171584608}
+  - {fileID: 36915025}
+  - {fileID: 1297036420}
