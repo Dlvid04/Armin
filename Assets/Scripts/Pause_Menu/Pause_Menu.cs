@@ -35,6 +35,10 @@ public class PauseMenu : MonoBehaviour
         float savedVolume = PlayerPrefs.GetFloat(VolumePrefKey, 0f); // Standardwert: 0
         SetVolume(savedVolume);
         VolumeSlider.value = savedVolume;
+
+        if (ClockUI == null && WaschmaschinenUI == null && HomeRiddle == null && ClockRiddle == null && WaschmaschinenRätsel == null) {
+            throw new System.Exception("Diese Exception kann Ignoriert werden!");
+        }
     }
     void Update()
     {
@@ -54,11 +58,13 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         CrossHair.SetActive(false);
         InventoryUI.SetActive(false);
-        if (HomeRiddle.IsOnSomething()) {
-            try {
-                HomeRiddle.IsOnWhat().transform.Find("UI").gameObject.SetActive(false);
-            } catch (System.Exception) {
-            }
+        if (HomeRiddle != null) {
+            if (HomeRiddle.IsOnSomething()) {
+                try {
+                    HomeRiddle.IsOnWhat().transform.Find("UI").gameObject.SetActive(false);
+                } catch (System.Exception) {
+                }
+            } 
         }
     }
     public void DeactivateMenu()
@@ -70,17 +76,19 @@ public class PauseMenu : MonoBehaviour
         SteuerungMenuUI.SetActive(false);
         isPaused = false;
         InventoryUI.SetActive(true);
-        if (HomeRiddle.IsOnSomething()) {
-            try {
-                HomeRiddle.IsOnWhat().transform.Find("UI").gameObject.SetActive(true);
-            } catch (System.Exception) {
-            }
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        } else {
-            CrossHair.SetActive(true);
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+        if (HomeRiddle != null) {
+            if (HomeRiddle.IsOnSomething()) {
+                try {
+                    HomeRiddle.IsOnWhat().transform.Find("UI").gameObject.SetActive(true);
+                } catch (System.Exception) {
+                }
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            } else {
+                CrossHair.SetActive(true);
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            } 
         }
     }
 

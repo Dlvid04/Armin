@@ -8898,7 +8898,7 @@ MonoBehaviour:
   Volume: {fileID: 921383247}
   VolumeSlider: {fileID: 48689878}
   BrightnessSlider: {fileID: 1758408540}
-  HomeRiddle: {fileID: 1329278646}
+  HomeRiddle: {fileID: 0}
   ClockRiddle: {fileID: 365260011}
   "WaschmaschinenR\xE4tsel": {fileID: 919132149524466333}
 --- !u!4 &445233762
