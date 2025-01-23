@@ -10,7 +10,7 @@ public class HomeRiddle : MonoBehaviour
     public GameObject BibelBright, BibelDark, Laptop, Clock, NachtTischSchloss;
     public ClockRiddle ClockRiddle;
     public Laptop LaptopScript;
-    public WaschmaschinenRätsel WaschmaschinenScript;
+    public WaschmaschinenRÃ¤tsel WaschmaschinenScript;
     public Keypad KeypadScript;
     public Inventory Inventory;
     public Animator NachtTischController;
@@ -34,7 +34,7 @@ public class HomeRiddle : MonoBehaviour
             }
         }
 
-        if (LA.LookingAt() != null && LA.LookingAt().name == "PadlockKomode" && Inventory.GegenstandImInventarUndAusgerüstet("Goldener Schlüssel")) {
+        if (LA.LookingAt() != null && LA.LookingAt().name == "PadlockKomode" && Inventory.GegenstandImInventarUndAusgerÃ¼stet("Goldener SchlÃ¼ssel")) {
             if (Input.GetKeyDown("e")) {
                 NachtTischSchloss.SetActive(false);
                 NachtTischController.SetBool("isOpen_Obj_1",true);
