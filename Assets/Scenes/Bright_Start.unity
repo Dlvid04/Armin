@@ -43520,11 +43520,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812270968}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.25553015, z: -0, w: 0.9668011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1336228, y: 1.8472872, z: 0.08344811}
   m_LocalScale: {x: 1.2500001, y: 1.25, z: 1.2500001}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4329574636165270350}
   m_Father: {fileID: 4942815777082730365}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &812270970
@@ -117798,6 +117799,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
   m_IsActive: 1
+--- !u!1 &3134844351184980328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4329574636165270350}
+  - component: {fileID: 8677591103194375849}
+  - component: {fileID: 6623239372166781639}
+  m_Layer: 0
+  m_Name: pushpin_plastic_Red
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!33 &3158004677293909652
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -120141,6 +120160,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9042981877119749623}
   m_Mesh: {fileID: 5272766233787845047, guid: 41f6a905545dcba459c0d05d996e8d8a, type: 3}
+--- !u!4 &4329574636165270350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134844351184980328}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.14656606, y: -0.20931803, z: -0.5545343, w: 0.79195714}
+  m_LocalPosition: {x: 0.314, y: 0.335, z: 0.208}
+  m_LocalScale: {x: 0.79999995, y: 0.7999999, z: 0.79999995}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 812270969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -70}
 --- !u!1 &4333405014839019303
 GameObject:
   m_ObjectHideFlags: 0
@@ -125044,6 +125078,49 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356065177506431671}
   m_Mesh: {fileID: 9044705744668436879, guid: 41f6a905545dcba459c0d05d996e8d8a, type: 3}
+--- !u!23 &6623239372166781639
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134844351184980328}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 125d4e7d7de36064cbdcf6321367454f, type: 2}
+  - {fileID: 2100000, guid: 125d4e7d7de36064cbdcf6321367454f, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &6626207491974324847
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -129381,6 +129458,14 @@ Transform:
   - {fileID: 1076800137560927877}
   m_Father: {fileID: 5561656174610861683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8677591103194375849
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3134844351184980328}
+  m_Mesh: {fileID: -5500911011094362489, guid: cf82fe23ae2ff8945b884a2175c367c8, type: 3}
 --- !u!1 &8681990908952988109
 GameObject:
   m_ObjectHideFlags: 0
