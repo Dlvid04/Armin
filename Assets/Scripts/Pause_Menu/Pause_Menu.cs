@@ -37,7 +37,8 @@ public class PauseMenu : MonoBehaviour
         VolumeSlider.value = savedVolume;
 
         if (ClockUI == null && WaschmaschinenUI == null && HomeRiddle == null && ClockRiddle == null && WaschmaschinenRätsel == null) {
-            Debug.LogError("Diese Exception kann Ignoriert werden!");
+            return;
+            //Debug.LogError("Diese Exception kann Ignoriert werden!");
         }
     }
     void Update()
