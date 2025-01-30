@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
+using UnityEngine.Playables;
 
 public class GlobusRiddle : MonoBehaviour {
     public Transform Globus, CameraHolder, CameraHolderPlayer;
     public IsLookingAt LA;
     public GameObject CrossHairUI, InventoryUI, PinNeedle, GlobusUI;
-    public bool IsOnGlobus, isDragging;
+    public bool IsOnGlobus, isDragging,cutsceneBeendet;
     public Player_Camera PCScript;
     public Player_Movement PMScript;
     public Camera PlayerCamera;
@@ -19,6 +20,8 @@ public class GlobusRiddle : MonoBehaviour {
     public TextMeshProUGUI GlobusTxt;
     public List<Color> spielerEingabe = new List<Color>();
     public List<Color> rätselLösung = new List<Color>();
+    public PlayableDirector PlayableDirector;
+    public Animator Chandelier;
 
     void Start() {
         rätselLösung.Add(Color.red);
@@ -27,7 +30,16 @@ public class GlobusRiddle : MonoBehaviour {
     }
 
     void Update() {
-        if (LA.LookingAt() != null && LA.LookingAt().name == "Globe" && Input.GetKeyDown("e") && IsOnGlobus == false) {
+        Debug.Log(PlayableDirector.state);
+        if (PlayableDirector.state == PlayState.Playing) {
+            cutsceneBeendet = true;
+        }
+        if (PlayableDirector.state != PlayState.Playing && cutsceneBeendet) {
+            PMScript.enabled = enabled;
+            PCScript.enabled = enabled;
+        }
+
+        if (LA.LookingAt() != null && LA.LookingAt().name == "Globe" && Input.GetKeyDown("e") && IsOnGlobus == false && !cutsceneBeendet) {
             OnGlobus();
         } else if (IsOnGlobus == true && Input.GetKeyDown("e")) {
             OffGlobus();
@@ -58,7 +70,9 @@ public class GlobusRiddle : MonoBehaviour {
     public void RätselGelöst() {
         OffGlobus();
         tag = "Untagged";
-        enabled = false;
+        PlayableDirector.Play();
+        PMScript.enabled = false;
+        PCScript.enabled = false;
     }
 
     public void RätselAntwortTesten() {
@@ -104,6 +118,7 @@ public class GlobusRiddle : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
         IsOnGlobus = false;
         GlobusUI.SetActive(false);
+
     }
 
     void RotateObject() {
