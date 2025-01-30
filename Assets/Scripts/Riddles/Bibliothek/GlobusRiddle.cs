@@ -18,12 +18,12 @@ public class GlobusRiddle : MonoBehaviour {
     public int anzahlAnPins = 0, Counter;
     public TextMeshProUGUI GlobusTxt;
     public List<Color> spielerEingabe = new List<Color>();
-    public List<Color> rätselLösung = new List<Color>();
+    public List<Color> rÃ¤tselLÃ¶sung = new List<Color>();
 
     void Start() {
-        rätselLösung.Add(Color.red);
-        rätselLösung.Add(Color.blue);
-        rätselLösung.Add(Color.green);
+        rÃ¤tselLÃ¶sung.Add(Color.red);
+        rÃ¤tselLÃ¶sung.Add(Color.blue);
+        rÃ¤tselLÃ¶sung.Add(Color.green);
     }
 
     void Update() {
@@ -55,15 +55,15 @@ public class GlobusRiddle : MonoBehaviour {
         }
     }
 
-    public void RätselGelöst() {
+    public void RÃ¤tselGelÃ¶st() {
         OffGlobus();
         tag = "Untagged";
         enabled = false;
     }
 
-    public void RätselAntwortTesten() {
+    public void RÃ¤tselAntwortTesten() {
         for (int i = 0; i < spielerEingabe.Count; i++) {
-            if (rätselLösung.Contains(spielerEingabe[i]) && anzahlAnPins == 3) {
+            if (rÃ¤tselLÃ¶sung.Contains(spielerEingabe[i]) && anzahlAnPins == 3) {
                 Counter++;
             } else {
                 Counter = 0;
@@ -72,7 +72,7 @@ public class GlobusRiddle : MonoBehaviour {
         }
 
         if (Counter == 3) {
-            RätselGelöst();
+            RÃ¤tselGelÃ¶st();
         }
     }
 
@@ -107,12 +107,10 @@ public class GlobusRiddle : MonoBehaviour {
     }
 
     void RotateObject() {
-        float horizontal = Input.GetAxis("Mouse X") * 200f * Time.deltaTime;
-        float vertical = Input.GetAxis("Mouse Y") * 200f * Time.deltaTime;
-
-
-        transform.Rotate(Vector3.up, -horizontal, Space.World);
-        transform.Rotate(Vector3.right, vertical, Space.Self);
+        float horizontal = Input.GetAxis("Mouse X") * 400f * Time.deltaTime;
+        float vertical = Input.GetAxis("Mouse Y") * 400f * Time.deltaTime;
+        transform.eulerAngles += Vector3.up * -horizontal;
+        transform.eulerAngles += Vector3.forward * vertical;
     }
 
     void PlaceObject() {
@@ -120,9 +118,9 @@ public class GlobusRiddle : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit hit) && anzahlAnPins < 4 && hit.collider.gameObject.name == "Globe") {
             Instantiate(PinNeedle, hit.point, Quaternion.identity).transform.SetParent(Globus);
             anzahlAnPins++;
-            GlobusTxt.text = $"Zurücksetzen\nGesetzte Pins: {anzahlAnPins}/4";
+            GlobusTxt.text = $"ZurÃ¼cksetzen\nGesetzte Pins: {anzahlAnPins}/4";
             GetColor();
-            RätselAntwortTesten();
+            RÃ¤tselAntwortTesten();
         }
     }
 
@@ -182,13 +180,13 @@ public class GlobusRiddle : MonoBehaviour {
         else spielerEingabe.Add(Color.white); //Daneben Geklickt
     }
 
-    public void PinsZurücksetzten (){
+    public void PinsZurÃ¼cksetzten (){
         Counter = 0;
         anzahlAnPins = 0;
         foreach (Transform child in transform) { 
             Destroy(child.gameObject);
         }
-        GlobusTxt.text = $"Zurücksetzen\nGesetzte Pins: {anzahlAnPins}/4";
+        GlobusTxt.text = $"ZurÃ¼cksetzen\nGesetzte Pins: {anzahlAnPins}/4";
         spielerEingabe.Clear();
     }
 }
