@@ -18,12 +18,12 @@ public class GlobusRiddle : MonoBehaviour {
     public int anzahlAnPins = 0, Counter;
     public TextMeshProUGUI GlobusTxt;
     public List<Color> spielerEingabe = new List<Color>();
-    public List<Color> rätselLösung = new List<Color>();
+    public List<Color> rï¿½tselLï¿½sung = new List<Color>();
 
     void Start() {
-        rätselLösung.Add(Color.red);
-        rätselLösung.Add(Color.blue);
-        rätselLösung.Add(Color.green);
+        rï¿½tselLï¿½sung.Add(Color.red);
+        rï¿½tselLï¿½sung.Add(Color.blue);
+        rï¿½tselLï¿½sung.Add(Color.green);
     }
 
     void Update() {
@@ -55,15 +55,15 @@ public class GlobusRiddle : MonoBehaviour {
         }
     }
 
-    public void RätselGelöst() {
+    public void Rï¿½tselGelï¿½st() {
         OffGlobus();
         tag = "Untagged";
         enabled = false;
     }
 
-    public void RätselAntwortTesten() {
+    public void Rï¿½tselAntwortTesten() {
         for (int i = 0; i < spielerEingabe.Count; i++) {
-            if (rätselLösung.Contains(spielerEingabe[i]) && anzahlAnPins == 3) {
+            if (rï¿½tselLï¿½sung.Contains(spielerEingabe[i]) && anzahlAnPins == 3) {
                 Counter++;
             } else {
                 Counter = 0;
@@ -72,7 +72,7 @@ public class GlobusRiddle : MonoBehaviour {
         }
 
         if (Counter == 3) {
-            RätselGelöst();
+            Rï¿½tselGelï¿½st();
         }
     }
 
@@ -120,9 +120,9 @@ public class GlobusRiddle : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit hit) && anzahlAnPins < 4 && hit.collider.gameObject.name == "Globe") {
             Instantiate(PinNeedle, hit.point, Quaternion.identity).transform.SetParent(Globus);
             anzahlAnPins++;
-            GlobusTxt.text = $"Zurücksetzen\nGesetzte Pins: {anzahlAnPins}/4";
+            GlobusTxt.text = $"Zurï¿½cksetzen\nGesetzte Pins: {anzahlAnPins}/4";
             GetColor();
-            RätselAntwortTesten();
+            Rï¿½tselAntwortTesten();
         }
     }
 
@@ -182,13 +182,13 @@ public class GlobusRiddle : MonoBehaviour {
         else spielerEingabe.Add(Color.white); //Daneben Geklickt
     }
 
-    public void PinsZurücksetzten (){
+    public void PinsZurï¿½cksetzten (){
         Counter = 0;
         anzahlAnPins = 0;
         foreach (Transform child in transform) { 
             Destroy(child.gameObject);
         }
-        GlobusTxt.text = $"Zurücksetzen\nGesetzte Pins: {anzahlAnPins}/4";
+        GlobusTxt.text = $"Zurï¿½cksetzen\nGesetzte Pins: {anzahlAnPins}/4";
         spielerEingabe.Clear();
     }
 }
