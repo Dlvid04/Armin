@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
+using UnityEngine.Playables;
 
 public class GlobusRiddle : MonoBehaviour {
     public Transform Globus, CameraHolder, CameraHolderPlayer;
     public IsLookingAt LA;
     public GameObject CrossHairUI, InventoryUI, PinNeedle, GlobusUI;
-    public bool IsOnGlobus, isDragging;
+    public bool IsOnGlobus, isDragging,cutsceneBeendet;
     public Player_Camera PCScript;
     public Player_Movement PMScript;
     public Camera PlayerCamera;
@@ -18,16 +19,27 @@ public class GlobusRiddle : MonoBehaviour {
     public int anzahlAnPins = 0, Counter;
     public TextMeshProUGUI GlobusTxt;
     public List<Color> spielerEingabe = new List<Color>();
-    public List<Color> r�tselL�sung = new List<Color>();
+    public List<Color> rätselLösung = new List<Color>();
+    public PlayableDirector PlayableDirector;
+    public Animator Chandelier;
 
     void Start() {
-        r�tselL�sung.Add(Color.red);
-        r�tselL�sung.Add(Color.blue);
-        r�tselL�sung.Add(Color.green);
+        rätselLösung.Add(Color.red);
+        rätselLösung.Add(Color.blue);
+        rätselLösung.Add(Color.green);
     }
 
     void Update() {
-        if (LA.LookingAt() != null && LA.LookingAt().name == "Globe" && Input.GetKeyDown("e") && IsOnGlobus == false) {
+        Debug.Log(PlayableDirector.state);
+        if (PlayableDirector.state == PlayState.Playing) {
+            cutsceneBeendet = true;
+        }
+        if (PlayableDirector.state != PlayState.Playing && cutsceneBeendet) {
+            PMScript.enabled = enabled;
+            PCScript.enabled = enabled;
+        }
+
+        if (LA.LookingAt() != null && LA.LookingAt().name == "Globe" && Input.GetKeyDown("e") && IsOnGlobus == false && !cutsceneBeendet) {
             OnGlobus();
         } else if (IsOnGlobus == true && Input.GetKeyDown("e")) {
             OffGlobus();
@@ -55,15 +67,19 @@ public class GlobusRiddle : MonoBehaviour {
         }
     }
 
-    public void R�tselGel�st() {
+
+    public void RätselGelöst() {
         OffGlobus();
         tag = "Untagged";
-        enabled = false;
+        PlayableDirector.Play();
+        PMScript.enabled = false;
+        PCScript.enabled = false;
     }
 
-    public void R�tselAntwortTesten() {
+
+    public void RätselAntwortTesten() {
         for (int i = 0; i < spielerEingabe.Count; i++) {
-            if (r�tselL�sung.Contains(spielerEingabe[i]) && anzahlAnPins == 3) {
+            if (rätselLösung.Contains(spielerEingabe[i]) && anzahlAnPins == 3) {
                 Counter++;
             } else {
                 Counter = 0;
@@ -72,7 +88,7 @@ public class GlobusRiddle : MonoBehaviour {
         }
 
         if (Counter == 3) {
-            R�tselGel�st();
+            RätselGelöst();
         }
     }
 
@@ -104,15 +120,14 @@ public class GlobusRiddle : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
         IsOnGlobus = false;
         GlobusUI.SetActive(false);
+
     }
 
     void RotateObject() {
-        float horizontal = Input.GetAxis("Mouse X") * 200f * Time.deltaTime;
-        float vertical = Input.GetAxis("Mouse Y") * 200f * Time.deltaTime;
-
-
-        transform.Rotate(Vector3.up, -horizontal, Space.World);
-        transform.Rotate(Vector3.right, vertical, Space.Self);
+        float horizontal = Input.GetAxis("Mouse X") * 400f * Time.deltaTime;
+        float vertical = Input.GetAxis("Mouse Y") * 400f * Time.deltaTime;
+        transform.eulerAngles += Vector3.up * -horizontal;
+        transform.eulerAngles += Vector3.forward * vertical;
     }
 
     void PlaceObject() {
@@ -120,9 +135,9 @@ public class GlobusRiddle : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit hit) && anzahlAnPins < 4 && hit.collider.gameObject.name == "Globe") {
             Instantiate(PinNeedle, hit.point, Quaternion.identity).transform.SetParent(Globus);
             anzahlAnPins++;
-            GlobusTxt.text = $"Zur�cksetzen\nGesetzte Pins: {anzahlAnPins}/4";
+            GlobusTxt.text = $"Zurücksetzen\nGesetzte Pins: {anzahlAnPins}/4";
             GetColor();
-            R�tselAntwortTesten();
+            RätselAntwortTesten();
         }
     }
 
@@ -182,13 +197,14 @@ public class GlobusRiddle : MonoBehaviour {
         else spielerEingabe.Add(Color.white); //Daneben Geklickt
     }
 
-    public void PinsZur�cksetzten (){
+
+    public void PinsZurücksetzten (){
         Counter = 0;
         anzahlAnPins = 0;
         foreach (Transform child in transform) { 
             Destroy(child.gameObject);
         }
-        GlobusTxt.text = $"Zur�cksetzen\nGesetzte Pins: {anzahlAnPins}/4";
+        GlobusTxt.text = $"Zurücksetzen\nGesetzte Pins: {anzahlAnPins}/4";
         spielerEingabe.Clear();
     }
 }
