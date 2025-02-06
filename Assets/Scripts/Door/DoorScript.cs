@@ -16,7 +16,7 @@ public class DoorScript : MonoBehaviour
     void Update()
     {
         if (LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Door")) {
-            if (Input.GetKeyDown("e")) {                    
+            if (Input.GetKey(InputManager.Instance.Interact)) {                    
                 LA.LookingAt().GetComponentInParent<DoorController>().SendMessage("ToggleDoor");
             }
         }

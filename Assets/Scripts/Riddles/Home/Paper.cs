@@ -15,7 +15,7 @@ public class Paper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (LA.LookingAt() != null && LA.LookingAt().name == "RiddlePaper" && Input.GetKeyDown("e") && ReadPaper == false) {
+        if (LA.LookingAt() != null && LA.LookingAt().name == "RiddlePaper" && Input.GetKey(InputManager.Instance.Interact) && ReadPaper == false) {
             Draw.GetChild(0).transform.SetParent(PaperReader);
             transform.localPosition = new Vector3(0f,0f,0f);
             transform.localRotation = Quaternion.Euler(90f,180f,0f);
@@ -26,7 +26,7 @@ public class Paper : MonoBehaviour
             PMScript.enabled = false;
             Inventory.SetActive(false);
             CrossHairUI.SetActive(false);
-        } else if (ReadPaper == true && Input.GetKeyDown("e")) {
+        } else if (ReadPaper == true && Input.GetKey(InputManager.Instance.Interact)) {
             PaperReader.GetChild(0).transform.SetParent(Draw);
             transform.localPosition = new Vector3(0f, 0f, 0f);
             transform.localRotation = Quaternion.Euler(0f, 0f, 0f);

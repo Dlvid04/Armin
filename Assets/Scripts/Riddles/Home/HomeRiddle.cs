@@ -21,13 +21,13 @@ public class HomeRiddle : MonoBehaviour
     void Update()
     {
         if (LA.LookingAt() != null && LA.LookingAt().name == "BibleBright") {
-            if (Input.GetKeyDown("e"))
+            if (Input.GetKey(InputManager.Instance.Interact))
             {
                 Bright();
                 Riddle();
             }
         }else if(LA.LookingAt() != null && LA.LookingAt().name == "BibleDark"){
-            if (Input.GetKeyDown("e"))
+            if (Input.GetKey(InputManager.Instance.Interact))
             {
                 Dark();
                 Riddle();
@@ -35,7 +35,7 @@ public class HomeRiddle : MonoBehaviour
         }
 
         if (LA.LookingAt() != null && LA.LookingAt().name == "PadlockKomode" && Inventory.GegenstandImInventarUndAusgerüstet("Goldener Schlüssel")) {
-            if (Input.GetKeyDown("e")) {
+            if (Input.GetKey(InputManager.Instance.Interact)) {
                 NachtTischSchloss.SetActive(false);
                 NachtTischController.SetBool("isOpen_Obj_1",true);
             }

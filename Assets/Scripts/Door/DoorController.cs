@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    public GameObject door;  // Referenz auf das Tür-Objekt
-    public bool isOpen = false; // Zustand der Tür (offen oder geschlossen)
-    public bool isAnimating = false; // Animation-Status (ob die Animation noch läuft)
+    public GameObject door;
+    public bool isOpen = false;
+    public bool isAnimating = false;
     public int DoorIndex;
 
     void Start()
@@ -16,13 +16,11 @@ public class DoorController : MonoBehaviour
     public void ToggleDoor()
     {
         print("interact with door");
-        // Überprüfe, ob gerade eine Animation läuft
         if (isAnimating)
         {
             return;
         }
 
-        // Animation-Component holen
         Animator anim = door.GetComponent<Animator>();
 
 

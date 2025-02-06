@@ -21,13 +21,13 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+        if (Input.GetKey(InputManager.Instance.Inventar1)) {
             Slot_Switchen(1);
-        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+        } else if (Input.GetKey(InputManager.Instance.Inventar2)) {
             Slot_Switchen(2);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q)) {
+        if (Input.GetKey(InputManager.Instance.ThrowOut)) {
             Throw();
         }
     }
