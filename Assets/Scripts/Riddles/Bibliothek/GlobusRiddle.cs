@@ -67,6 +67,7 @@ public class GlobusRiddle : MonoBehaviour {
         }
     }
 
+
     public void RätselGelöst() {
         OffGlobus();
         tag = "Untagged";
@@ -74,6 +75,7 @@ public class GlobusRiddle : MonoBehaviour {
         PMScript.enabled = false;
         PCScript.enabled = false;
     }
+
 
     public void RätselAntwortTesten() {
         for (int i = 0; i < spielerEingabe.Count; i++) {
@@ -194,6 +196,7 @@ public class GlobusRiddle : MonoBehaviour {
         else if (color == new Color(1, 1, 0, 1)) spielerEingabe.Add(new Color(1,1,0,1));  //Russland
         else spielerEingabe.Add(Color.white); //Daneben Geklickt
     }
+
 
     public void PinsZurücksetzten (){
         Counter = 0;

@@ -46,7 +46,7 @@ public class Player_Movement : MonoBehaviour
             Animator.SetBool("IsStanding", false);
             Animator.SetBool("IsWalking", false);
         }
-        else if (!Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        else if (!Input.GetKey(KeyCode.LeftShift) && Input.GetKey(InputManager.Instance.moveForward) || Input.GetKey(InputManager.Instance.moveLeft) || Input.GetKey(InputManager.Instance.moveBackward) || Input.GetKey(InputManager.Instance.moveRight))
         {
             Speed = 3f;
             Animator.SetBool("IsRunning",false);
