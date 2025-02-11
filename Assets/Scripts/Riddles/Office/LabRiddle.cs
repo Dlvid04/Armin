@@ -49,6 +49,10 @@ public class LabRiddle : MonoBehaviour
                 SelectedObject = null;
             }
         }
+        
+        if(SelectedObject != null){
+            DragSelectedObject();
+        }
 
 
     }
@@ -111,7 +115,6 @@ public class LabRiddle : MonoBehaviour
                 Debug.Log("evtuizbuzibvtverguizb");
                 SelectedObject = hit.collider.gameObject;
                 SelectedObjectPosition = SelectedObject.transform.position;
-
                 zPosition = PlayerCamera.WorldToScreenPoint(SelectedObject.transform.position).z;
                 offset = SelectedObject.transform.position - GetMouseWorldPosition();
             }
@@ -124,4 +127,8 @@ public class LabRiddle : MonoBehaviour
         return PlayerCamera.ScreenToWorldPoint(mousePosition);
     }
 
+    void DragSelectedObject() {
+        Vector3 mouseWorldPosition = GetMouseWorldPosition();
+        SelectedObject.transform.position = mouseWorldPosition + offset;
+    }
 }
