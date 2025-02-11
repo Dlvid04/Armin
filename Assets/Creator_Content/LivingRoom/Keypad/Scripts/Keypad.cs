@@ -59,10 +59,10 @@ namespace NavKeypad
 
         void Update() {
             if (LA.LookingAt() != null && LA.LookingAt().name == "KeyPad" && onKeyPad == false) {
-                if (Input.GetKey(InputManager.Instance.Interact)) {
+                if (Input.GetKeyDown(InputManager.Instance.Interact)) {
                     OnKeyPad();
                 }
-            } else if (onKeyPad == true && Input.GetKey(InputManager.Instance.Interact)) {
+            } else if (onKeyPad == true && Input.GetKeyDown(InputManager.Instance.Interact)) {
                 OffKeyPad();
             }
         }

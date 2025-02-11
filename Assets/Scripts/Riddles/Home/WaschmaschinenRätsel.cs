@@ -34,10 +34,10 @@ public class WaschmaschinenRätsel : MonoBehaviour
     }
     void Update(){
         if(LA.LookingAt() != null &&  LA.LookingAt().name == "Waschmaschine" && isOnWaschmaschine == false){
-            if (Input.GetKey(InputManager.Instance.Interact)) {
+            if (Input.GetKeyDown(InputManager.Instance.Interact)) {
                 WaschmaschineAn();
             }
-        }else if(isOnWaschmaschine == true && Input.GetKey(InputManager.Instance.Interact)) {
+        }else if(isOnWaschmaschine == true && Input.GetKeyDown(InputManager.Instance.Interact)) {
             WaschmaschineAus();
         }
     }

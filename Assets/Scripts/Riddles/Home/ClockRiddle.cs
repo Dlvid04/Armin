@@ -22,7 +22,7 @@ public class ClockRiddle : MonoBehaviour
     }
     void Update()
     { 
-        if(LA.LookingAt() != null && LA.LookingAt().name == "Clock" && PlayerInventory.Slot1_Angezeigt && Input.GetKey(InputManager.Instance.Interact)) {
+        if(LA.LookingAt() != null && LA.LookingAt().name == "Clock" && PlayerInventory.Slot1_Angezeigt && Input.GetKeyDown(InputManager.Instance.Interact)) {
             if(PlayerInventory.ObjectHolder1.childCount > 0 && PlayerInventory.ObjectHolder1.GetChild(0).name == "Minuten Zeiger"){
                 PlayerInventory.GegenstandVerwenden(PlayerInventory.ObjectHolder1.GetChild(0).name);
                 PlayerInventory.GegenstandImInventarTransform("Minuten Zeiger").SetParent(MinutHandHolder,false);
@@ -36,7 +36,7 @@ public class ClockRiddle : MonoBehaviour
                 HourHandHolder.GetChild(0).transform.localRotation = Quaternion.identity;
                 HourHandHolder.GetChild(0).GetComponent<Rigidbody>().isKinematic = true;
             }
-        }else if(LA.LookingAt() != null && LA.LookingAt().name == "Clock" && PlayerInventory.Slot2_Angezeigt && Input.GetKey(InputManager.Instance.Interact)) {
+        }else if(LA.LookingAt() != null && LA.LookingAt().name == "Clock" && PlayerInventory.Slot2_Angezeigt && Input.GetKeyDown(InputManager.Instance.Interact)) {
             if(PlayerInventory.ObjectHolder2.childCount > 0 && PlayerInventory.ObjectHolder2.GetChild(0).name == "Minuten Zeiger") {
                 PlayerInventory.GegenstandVerwenden(PlayerInventory.ObjectHolder2.GetChild(0).name);
                 PlayerInventory.GegenstandImInventarTransform("Minuten Zeiger").SetParent(MinutHandHolder,false);

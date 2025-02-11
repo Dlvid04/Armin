@@ -38,9 +38,9 @@ public class GlobusRiddle : MonoBehaviour {
             PCScript.enabled = enabled;
         }
 
-        if (LA.LookingAt() != null && LA.LookingAt().name == "Globe" && Input.GetKey(InputManager.Instance.Interact) && IsOnGlobus == false && !cutsceneBeendet) {
+        if (LA.LookingAt() != null && LA.LookingAt().name == "Globe" && Input.GetKeyDown(InputManager.Instance.Interact) && IsOnGlobus == false && !cutsceneBeendet) {
             OnGlobus();
-        } else if (IsOnGlobus == true && Input.GetKey(InputManager.Instance.Interact)) {
+        } else if (IsOnGlobus == true && Input.GetKeyDown(InputManager.Instance.Interact)) {
             OffGlobus();
         }
 

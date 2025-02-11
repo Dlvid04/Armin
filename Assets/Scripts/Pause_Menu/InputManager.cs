@@ -23,7 +23,6 @@ public class InputManager : MonoBehaviour
     void Awake() {
         if (Instance == null) {
             Instance = this;
-            SteurungMenue.SetActive(false);
         } else {
             Debug.LogError("More than one InputManager in the scene!");
             Destroy(gameObject);

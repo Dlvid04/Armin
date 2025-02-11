@@ -12,7 +12,7 @@ public class Is_Portable : MonoBehaviour
     {
         if (LA.LookingAt() != null &&  LA.LookingAt().CompareTag("Portable"))
         {
-            if (Input.GetKey(InputManager.Instance.Interact))
+            if (Input.GetKeyDown(InputManager.Instance.Interact))
             {
                 if (Inventory.Slot1_Belegt == false && Inventory.Slot2_Belegt == false)
                 {

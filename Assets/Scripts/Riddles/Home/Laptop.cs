@@ -21,10 +21,10 @@ public class Laptop : MonoBehaviour
     }
     void Update(){
         if(LA.LookingAt() != null &&  LA.LookingAt().name == "Laptop" && IsOnLaptop == false && LA.LookingAt().tag == "Interactable"){
-            if (Input.GetKey(InputManager.Instance.Interact)) {
+            if (Input.GetKeyDown(InputManager.Instance.Interact)) {
                 LaptopAn();
             }
-        }else if(IsOnLaptop == true && Input.GetKey(InputManager.Instance.Interact)) {
+        }else if(IsOnLaptop == true && Input.GetKeyDown(InputManager.Instance.Interact)) {
             LaptopAus();
         }
 
