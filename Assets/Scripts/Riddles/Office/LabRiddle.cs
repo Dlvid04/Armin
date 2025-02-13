@@ -13,7 +13,7 @@ public class LabRiddle : MonoBehaviour
     public Player_Camera Player_CameraScript;
     public IsLookingAt LA;
     public bool IsOnTable;
-    public GameObject CrossHairUI,InventoryUI;
+    public GameObject CrossHairUI,InventoryUI,Image;
     public TextMeshProUGUI NameText;
     public BoxCollider TableCollidor;
     
@@ -21,13 +21,6 @@ public class LabRiddle : MonoBehaviour
     Vector3 SelectedObjectPosition;
     Vector3 offset;
     float zPosition;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -54,7 +47,9 @@ public class LabRiddle : MonoBehaviour
             DragSelectedObject();
         }
 
-
+        if(SelectedObject != null){
+            
+        }
     }
 
     public void OnTable() {
@@ -86,6 +81,8 @@ public class LabRiddle : MonoBehaviour
         UnityEngine.Cursor.lockState = CursorLockMode.None;
         IsOnTable = false;
         TableCollidor.enabled = true;
+        Image.SetActive(false);
+        NameText.gameObject.SetActive(false);
         //GlobusUI.SetActive(false);
     }
 
@@ -95,17 +92,24 @@ public class LabRiddle : MonoBehaviour
         if (Physics.Raycast(ray, out hit)) {
             if (hit.collider.CompareTag("Interactable"))
             {
+                Image.SetActive(true);
+                NameText.gameObject.SetActive(true);
                 NameText.text = hit.collider.gameObject.name;
                 NameText.transform.position = Input.mousePosition + new Vector3(10, 10, 0);
+                Image.transform.position = Input.mousePosition + new Vector3(10,10,0);
             } else {
+                Image.SetActive(false);
+                NameText.gameObject.SetActive(false);
                 NameText.text = "";
             }
         } else {
+            Image.SetActive(false);
+            NameText.gameObject.SetActive(false);
             NameText.text = "";
         }
     }
 
-    void SelectObject() {
+    public void SelectObject() {
         Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -121,14 +125,20 @@ public class LabRiddle : MonoBehaviour
         }
     }
 
-    Vector3 GetMouseWorldPosition() {
+    public Vector3 GetMouseWorldPosition() {
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = zPosition;
         return PlayerCamera.ScreenToWorldPoint(mousePosition);
     }
 
-    void DragSelectedObject() {
+    public void DragSelectedObject() {
         Vector3 mouseWorldPosition = GetMouseWorldPosition();
         SelectedObject.transform.position = mouseWorldPosition + offset;
+    }
+
+    public void SchmelzenUndZerkleinern(){
+        if(SelectedObject != null && ){
+
+        }
     }
 }
