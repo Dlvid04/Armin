@@ -137,8 +137,15 @@ public class LabRiddle : MonoBehaviour
     }
 
     public void SchmelzenUndZerkleinern(){
-        if(SelectedObject != null && ){
+        Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
+        if (Physics.Raycast(ray, out hit)){
+            if(SelectedObject != null && hit.collider.gameObject.name == "Mörser & Stößel"){
+
+            }else if(SelectedObject != null && hit.collider.gameObject.name == "Brenner"){
+
+            }
         }
     }
 }

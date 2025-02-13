@@ -132,7 +132,9 @@ public class GlobusRiddle : MonoBehaviour {
     void PlaceObject() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit) && anzahlAnPins < 4 && hit.collider.gameObject.name == "Globe") {
-            Instantiate(PinNeedle, hit.point, Quaternion.identity).transform.SetParent(Globus);
+            GameObject g = Instantiate(PinNeedle, hit.point, Quaternion.identity);
+            g.transform.SetParent(Globus);
+            g.transform.up = hit.normal;
             anzahlAnPins++;
             GlobusTxt.text = $"Zurücksetzen\nGesetzte Pins: {anzahlAnPins}/4";
             GetColor();
